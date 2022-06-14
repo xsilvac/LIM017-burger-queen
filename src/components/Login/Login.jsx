@@ -1,11 +1,11 @@
 import {React, useState} from "react";
 
-export const Login = () => {
+const Login = () => {
   const [search, setSearch]= useState("");
   return (
         <form>
           <select>
-            <option selected disabled>Cargo</option>
+            <option defaultValue>Cargo</option>
             <option value="managger">Administrador</option>
             <option value="chef">Cocinero</option>
             <option value="waiter">Mesero</option>
@@ -29,3 +29,4 @@ export const Login = () => {
         </form>
   )
 }
+export default Login;
