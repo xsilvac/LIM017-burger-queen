@@ -6,10 +6,7 @@ import './Menu.css';
 export const Menu = () => {
   const navigate = useNavigate();
   const [user,loading, error] = useAuthState(auth);
-  const singOutClick = () => {
-    auth.signOut();
-    navigate("/");
-  }
+  const singOutClick = () => {auth.signOut();navigate("/");}
   return (
     <div>
         <h2 className="title">Estamos en Menu {user?.email}</h2>

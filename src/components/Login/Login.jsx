@@ -3,18 +3,24 @@ import{signInWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../firebaseConfig/FirebaseConfig";
 import {useNavigate} from "react-router-dom";
 import './Login.css';
+import  errorAuthFirebase from "../firebaseConfig/messajeError";
+
+
+
 export const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail]= useState("");
   const [password, setPassword]= useState("");
-  const singIn = () => {
+  const singIn = (e) => {
+    e.preventDefault();
     signInWithEmailAndPassword (auth,email,password)
-    .then(auth = navigate ('/Menu'))
-    .catch(err => console.error(err))
+    .then(auth => navigate ('/Menu'))
+    .catch(err => console.log("holaaaaa",errorAuthFirebase[err.code]));
+
   }
   return (
     <><div className="opacity"></div>
-    <form className="formLogin">
+    <form className="formLogin"  onSubmit={singIn}>
       <input
         type="email"
         name="userEmail"
@@ -27,7 +33,7 @@ export const Login = () => {
         autoComplete="off"
         placeholder="Password"
         onChange={ev => setPassword(ev.target.value)} />
-      <button className = "btnLogin" onClick={singIn} type="submit">Ingresar</button>
+      <button className = "btnLogin" type="submit">Ingresar</button>
     </form></>
   )
 }

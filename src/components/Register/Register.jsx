@@ -3,21 +3,25 @@ import{createUserWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../firebaseConfig/FirebaseConfig";
 import {useNavigate} from "react-router-dom";
 import './Register.css';
+import  errorAuthFirebase from "../firebaseConfig/messajeError.js"
+
 const Register = () => {
     const navigate=useNavigate();
   const [email, setEmail]= useState('')
   const [password, setPassword]= useState('')
-  const register = () => {
+  const register = (e) => { 
+    e.preventDefault();
     createUserWithEmailAndPassword(auth,email,password)
-    .then(auth = navigate ('/'))
-    .catch(err => console.error(err))
+    .then(auth => navigate ('/'))
+    .catch(err => console.log("holaaaaa",errorAuthFirebase[err.code]))
+    //.catch(err=>console.log(err.code))
   }
   return (
     
     <><div className="opacity"></div>
-    <form className = "formRegister">
+    <form className = "formRegister" onSubmit={register}>
         <select>
-            <option value disabled>Cargo</option> {/*como desactivar la primera opcion*/}
+            <option isDisabled >Cargo</option> 
             <option value="managger">Administrador</option>
             <option value="chef">Cocinero</option>
             <option value="waiter">Mesero</option>
@@ -44,7 +48,7 @@ const Register = () => {
         autoComplete='off'
         placeholder="Confirmar contraseña"
         />
-        <button className ="btnRegister" onClick = {register} type="submit">Registrar</button>
+        <button className ="btnRegister" type="submit">Registrar</button>
     </form>
     </>
   );
