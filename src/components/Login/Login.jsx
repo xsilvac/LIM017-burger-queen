@@ -1,16 +1,18 @@
 import {useState} from "react";
 import{signInWithEmailAndPassword} from "firebase/auth";
-import {auth} from "../../firebaseconfig/Firebaseconfig";
+import {auth} from "../firebaseConfig/FirebaseConfig";
 import {useNavigate} from "react-router-dom";
 export const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail]= useState("");
   const [password, setPassword]= useState("");
+
   const singIn = () => {
-    signInWithEmailAndPassword (auth,email,password)
+    signInWithEmailAndPassword(auth,email,password)
     .then(auth = navigate ('/Menu'))
     .catch(err => console.error(err))
   }
+  
   return (
         <form>
         <input
