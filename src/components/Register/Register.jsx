@@ -1,10 +1,8 @@
 import {useState} from "react";
 import{createUserWithEmailAndPassword} from "firebase/auth";
-import {auth} from "../../firebaseconfig/Firebaseconfig";
+import {auth} from "../firebaseConfig/FirebaseConfig";
 import {useNavigate} from "react-router-dom";
 import './Register.css';
-
-
 const Register = () => {
     const navigate=useNavigate();
   const [email, setEmail]= useState('')
@@ -14,8 +12,8 @@ const Register = () => {
     .then(auth = navigate ('/'))
     .catch(err => console.error(err))
   }
-  
   return (
+    
     <><div className="opacity"></div>
     <form className = "formRegister">
         <select>
@@ -52,5 +50,3 @@ const Register = () => {
   );
 };
 export default Register;
-
-

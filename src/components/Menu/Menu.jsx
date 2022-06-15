@@ -1,9 +1,8 @@
 import React from 'react'
 import {useAuthState} from "react-firebase-hooks/auth";
-import {auth} from "../../firebaseconfig/Firebaseconfig";
+import {auth} from "../firebaseConfig/FirebaseConfig";
 import {useNavigate} from "react-router-dom";
 import './Menu.css';
-
 export const Menu = () => {
   const navigate = useNavigate();
   const [user,loading, error] = useAuthState(auth);
@@ -18,4 +17,3 @@ export const Menu = () => {
     </div>
   )
 }
-
