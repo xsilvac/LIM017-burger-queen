@@ -1,5 +1,5 @@
 import {useState} from "react";
-import{createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
+import{signInWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../../firebaseconfig/Firebaseconfig";
 import {useNavigate} from "react-router-dom";
 
@@ -14,11 +14,7 @@ export const Login = () => {
     .then(auth = navigate ('/Menu'))
     .catch(err => console.error(err))
   }
-  const register = () => {
-    createUserWithEmailAndPassword(auth,email,password)
-    .then(auth = navigate ('/Menu'))
-    .catch(err => console.error(err))
-  }
+
   return (
 
         <form>
@@ -36,7 +32,7 @@ export const Login = () => {
         placeholder="Password" 
         onChange={ev => setPassword(ev.target.value)}
         />
-        <button type="submit">Ingresar</button>
+        <button onClick={singIn} type="submit">Ingresar</button>
 
         </form>
   
