@@ -1,23 +1,16 @@
-import { useState } from 'react'
-// import { UserContext } from '../../context/UserProvider';
-
+import {useState} from "react";
+import{createUserWithEmailAndPassword} from "firebase/auth";
+import {auth} from "../../firebaseconfig/Firebaseconfig";
+import {useNavigate} from "react-router-dom";
 const Register = () => {
+    const navigate=useNavigate();
   const [email, setEmail]= useState('')
   const [password, setPassword]= useState('')
-
-  // const {registerUser} = useContext(UserContext);
-
-  // const handleSubmit = async(e) => {
-  //   e.preventDefault();
-  //   console.log('procesando', email, password);
-  //   try{
-  //     await registerUser(email, password);
-  //   } catch(error){
-  //     console.log(error);
-  //   }
-  //  };
-
-
+  const register = () => {
+    createUserWithEmailAndPassword(auth,email,password)
+    .then(auth = navigate ('/'))
+    .catch(err => console.error(err))
+  }
   return (
     <>
     <form >
@@ -49,7 +42,7 @@ const Register = () => {
         autoComplete='off'
         placeholder="Confirmar contraseña"
         />
-        <button type="submit">Registrar</button>
+        <button onClick = {register} type="submit">Registrar</button>
     </form>
     </>
   );
