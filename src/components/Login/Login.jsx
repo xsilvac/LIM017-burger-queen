@@ -2,6 +2,7 @@ import {useState} from "react";
 import{signInWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../../firebaseconfig/Firebaseconfig";
 import {useNavigate} from "react-router-dom";
+import './Login.css';
 
 
 export const Login = () => {
@@ -17,24 +18,28 @@ export const Login = () => {
 
   return (
 
-        <form>
-        <input
+    // eslint-disable-next-line no-undef
+    <><div className="opacity"></div>
+    <div>
+    <form className="formLogin">
+
+
+      <input
         type="email"
         name="userEmail"
         autoComplete="off"
         placeholder="Usuario"
-        onChange={ev => setEmail(ev.target.value)}
-        /> 
-         <input
+        onChange={ev => setEmail(ev.target.value)} />
+      <input
         type="password"
         name="password"
         autoComplete="off"
-        placeholder="Password" 
-        onChange={ev => setPassword(ev.target.value)}
-        />
-        <button onClick={singIn} type="submit">Ingresar</button>
+        placeholder="Password"
+        onChange={ev => setPassword(ev.target.value)} />
+      <button className="btnLogin" onClick={singIn} type="submit">Ingresar</button>
 
-        </form>
+    </form></div></>
+
   
   )
 }

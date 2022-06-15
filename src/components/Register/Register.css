@@ -15,13 +15,13 @@ body {
     filter: blur(4px);
     z-index: -1;
 }
-.formLogin {
+.formRegister {
     display: flex;
     flex-direction: column;
     z-index: 1;
     align-items: flex-end;
 }
-.btnLogin {
+.btnRegister {
 color: #ffffff;
 padding:10px;
 background-Color: #f09014;

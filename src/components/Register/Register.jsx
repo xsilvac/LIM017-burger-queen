@@ -2,6 +2,7 @@ import {useState} from "react";
 import{createUserWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../../firebaseconfig/Firebaseconfig";
 import {useNavigate} from "react-router-dom";
+import './Register.css';
 
 
 const Register = () => {
@@ -15,8 +16,8 @@ const Register = () => {
   }
   
   return (
-    <>
-    <form >
+    <><div className="opacity"></div>
+    <form className = "formRegister">
         <select>
             <option value disabled>Cargo</option> {/*como desactivar la primera opcion*/}
             <option value="managger">Administrador</option>
@@ -45,7 +46,7 @@ const Register = () => {
         autoComplete='off'
         placeholder="Confirmar contraseña"
         />
-        <button onClick = {register} type="submit">Registrar</button>
+        <button className ="btnRegister" onClick = {register} type="submit">Registrar</button>
     </form>
     </>
   );
