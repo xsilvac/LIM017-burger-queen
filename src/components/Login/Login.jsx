@@ -1,32 +1,44 @@
-import {React, useState} from "react";
+import {useState} from "react";
+import{createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
+import {auth} from "../../firebaseConfig/FirebaseConfig";
+import {useNavigate} from "react-router-dom";
 
-const Login = () => {
-  const [search, setSearch]= useState("");
+
+export const Login = () => {
+  const navigate = useNavigate();
+  const [email, setEmail]= useState("");
+  const [password, setPassword]= useState("");
+  
+  const singIn = () => {
+    signInWithEmailAndPassword (auth,email,password)
+    .then(auth = navigate ('/Menu'))
+    .catch(err => console.error(err))
+  }
+  const register = () => {
+    createUserWithEmailAndPassword(auth,email,password)
+    .then(auth = navigate ('/Menu'))
+    .catch(err => console.error(err))
+  }
   return (
+
         <form>
-          <select>
-            <option defaultValue>Cargo</option>
-            <option value="managger">Administrador</option>
-            <option value="chef">Cocinero</option>
-            <option value="waiter">Mesero</option>
-        </select>
-          <input
-            type="text"
-            name="userName"
-            autoComplete="off"
-            placeholder="Usuario"
-            onChange={ev => setSearch(ev.target.value)}
-            />
-          <input
-            type="password"
-            name="password"
-            autoComplete="off"
-            placeholder="Contraseña"
-            onChange={ev => setSearch(ev.target.value)}
-            />
-          <button type="submit">Ingresar</button>
-          <p>RESULTADOS:{search}</p>
+        <input
+        type="email"
+        name="userEmail"
+        autoComplete="off"
+        placeholder="Usuario"
+        onChange={ev => setEmail(ev.target.value)}
+        /> 
+         <input
+        type="password"
+        name="password"
+        autoComplete="off"
+        placeholder="Password" 
+        onChange={ev => setPassword(ev.target.value)}
+        />
+        <button onClick={singIn} type="submit">Ingresar</button>
+
         </form>
+  
   )
 }
-export default Login;

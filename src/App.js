@@ -1,38 +1,35 @@
-import * as React from 'react';
-import Login from "./components/Login/Login";
-import Register from "./components/Register/Register";
-import Menu from './components/Menu/Menu';
+import React from "react";
+import { BrowserRouter,Routes, Route } from "react-router-dom";
+import { Menu } from "./components/Menu/Menu";
+import { Login } from "./components/Login/Login";
+import { Kitchen } from "./components/Kitchen/Kitchen";
 
-import { auth } from './firebase';
-import { onAuthStateChanged } from 'firebase/auth'
 
-function App() {
-  const [user, setUser] = React.useState(null);
-  const [authState, setAuthState] = React.useState(null)
+export function App() {
+  return (
+    
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="Menu" element={<Menu />} />
+        <Route path="Kitchen" element={<Kitchen />} />
+      </Routes>
+      </BrowserRouter>
 
-  React.useEffect(() => {
-    const unSubscribeAuth = onAuthStateChanged(auth,
-      async authenticatedUser => {
-        if(authenticatedUser) {
-          setUser(authenticatedUser.email)
-          setAuthState('Menu');
-        } else {
-          setUser(null);
-          setAuthState('Login')
-        }
-      })
-
-      return unSubscribeAuth;
-  }, [user])
-
-  if(authState === null) return <div>loading...</div>
-  if(authState === 'Login') return <Login setAuthState={setAuthState} setUser={setUser}/>
-  if(authState === 'Register') return <Register setAuthState={setAuthState} setUser={setUser}/>
-  if(user) return <Menu user={user} setAuthState={setAuthState} setUser={setUser}/>
+  );
 }
 
-export default App;
+// export function App () {
+//   return (
+//     <div className="appRouter">
+//     <Menu />
+//     <Login />
+//     </div>
+//   );
+// }
 
+
+export default App;
 
 
 
