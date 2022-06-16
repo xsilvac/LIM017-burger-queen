@@ -17,10 +17,13 @@ const Register = () => {
     //.catch(err=>console.log(err.code))
   }
   return (
-    
-    <><div className="opacity"></div>
+  <><div className="backgroundPage"></div>
+  <div className="opacity"></div>
+  <div className="divFormRegister">
+  <div className="blurFormReg"></div>
     <form className = "formRegister" onSubmit={register}>
-        <select>
+    <h1>REGISTRATE</h1>
+        <select className="optionsSelect">
             <option isDisabled >Cargo</option> 
             <option value="managger">Administrador</option>
             <option value="chef">Cocinero</option>
@@ -31,7 +34,7 @@ const Register = () => {
         name="nameNewUser"
         value={email}
         autoComplete='off'
-        placeholder="Email"
+        placeholder="ejemplo@burgerboss.com"
         onChange={ev => setEmail(ev.target.value)}
         />
         <input
@@ -39,18 +42,19 @@ const Register = () => {
         name="passwordNewUser"
         value={password}
         autoComplete='off'
-        placeholder="Contraseña"
+        placeholder="*************"
         onChange={ev => setPassword(ev.target.value)}
         />
+        <p>Mínimo 6 caracteres en la contraseña</p>
         <input
         type="password"
         name="passwordConfirmation"
         autoComplete='off'
-        placeholder="Confirmar contraseña"
+        placeholder="*************"
         />
         <button className ="btnRegister" type="submit">Registrar</button>
-    </form>
-    </>
+    </form></div></>
+    
   );
 };
 export default Register;

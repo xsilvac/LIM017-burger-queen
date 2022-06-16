@@ -7,37 +7,33 @@
   right: 0;
   font-family: "Delius", cursive;
 }
-/* .backgroundPage {
-  background: url(https://dalelavuelta.tv/wp-content/uploads/2021/03/En-el-laboratorio-las-mujeres-y-las-organizaciones-continuan-aprendiendo-y-adaptandose-a-los-cambios-que-es-la-clave-del-crecimiento-en-la-era-digital.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-  } */
-  /* .opacity {
+  .opacity {
     background: #000;
     position: absolute;
-    opacity: 50%;
+    opacity: 61%;
     width: 100vw;
     height: 100vh;
     filter: blur(4px);
-    z-index: -1;
     top :0;
     left : 0;
-}*/
+}
 .divForm{
   display: grid;
   grid-template-columns: repeat(25,4%);
   grid-template-rows: repeat(25,4%);
   width: 100vw;
   height: 100vh;
-  background-image: url('../../img/burger.png')
+  background-image: url('../../img/fondoResponsive.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 .formLogin {
-  grid-column: 18/span 18;
-  grid-row: 10/span 18;
+  grid-column: 4/span 17;
+  grid-row: 9/span 18;
   display: flex;
   flex-direction: column;
-  width: 75%;
+  width: 112%;
   height: 68%;
   justify-content: space-around;
   z-index: 1;
@@ -50,6 +46,7 @@
   color: black;
   border: none;
   text-align: center;
+  width: 79%;
 }
 .formLogin h1{
   color: rgb(41, 37, 37);
@@ -58,7 +55,7 @@
   color: rgb(41, 37, 37);
   padding: 15px;
   background-Color: #FAA30F;
-  width: 94%;
+  width: 91%;
   border-radius: 10px;
   border: none;
   font-size: 18px;
@@ -69,14 +66,52 @@
   color: white;
 }
 .blurForm{
-  top: 31%;
-  left: 65%;
+  top: 30%;
+  left: 10%;
   background-color: #F8F9FA;
   position: absolute;
   opacity: 52%;
-  width: 30%;
+  width: 80%;
   height: 52%;
-  /* z-index: revert; */
   border-radius: 25px;
-  /* filter: blur(4px); */
+}
+.logo{
+  z-index: 1;
+  background-image: url('../../img/Logo.png');
+  width: 100%;
+  height: 26%;
+  background-repeat: no-repeat;
+  grid-column: 2/span 25;
+  grid-row: 3/span 18;
+  background-size: auto;
+}
+@media (min-width: 499px) and (max-width: 1000px) {
+  .logo{
+  background-size: cover;
+  width: 83%;
+  grid-column: 5/span 25;
+  }
+  
+}
+@media (min-width: 1001px) and (max-width: 5000px) {
+.divForm{
+  background-image: url('../../img/burger.png');
+}
+.formLogin {
+  grid-column: 16/span 25;
+  grid-row: 10/span 18;
+  width: 75%;
+}
+.blurForm{
+  top: 33%;
+  left: 60%;
+  width: 30%;
+}
+.logo{
+  width: 74%;
+  height: 26%;
+  grid-column: 16/span 18;
+  grid-row: 4/span 18;
+  background-size: cover;
+}
 }
