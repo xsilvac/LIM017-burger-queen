@@ -20,7 +20,8 @@ export const Login = () => {
   }
   
   return (
-    <><div className="backgroundPage"></div><div className="opacity"></div>
+    <><div className="backgroundPage"></div>
+    <div className="opacity"></div>
     <div className="divForm">
     <div className="blurForm"></div>
     <form className="formLogin"  onSubmit={singIn}>
@@ -29,7 +30,7 @@ export const Login = () => {
         type="email"
         name="userEmail"
         autoComplete="off"
-        placeholder="12345@burgerboss.com"
+        placeholder="ejemplo@burgerboss.com"
         onChange={ev => setEmail(ev.target.value)} />
         <p></p>
       <input
@@ -38,7 +39,7 @@ export const Login = () => {
         autoComplete="off"
         placeholder="*************"
         onChange={ev => setPassword(ev.target.value)} />
-      <p>Minimo 6 caracteres en la contraseña</p>
+      <p>Mínimo 6 caracteres en la contraseña</p>
       <button className = "btnLogin" type="submit">INGRESAR</button>
     </form></div></>
   )

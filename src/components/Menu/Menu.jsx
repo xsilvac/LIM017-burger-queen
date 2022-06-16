@@ -9,7 +9,8 @@ export const Menu = () => {
   const singOutClick = () => {auth.signOut();navigate("/");}
   return (
     <div>
-        <h2 className="title">Estamos en Menu {user?.email}</h2>
+        <h2 className="title">Estamos en Menu {user?.displayName}</h2>
+        {console.log(user)};
         <button className = "btnClose" onClick={()=>singOutClick()}>Cerrar Sesión</button>
     </div>
   )
