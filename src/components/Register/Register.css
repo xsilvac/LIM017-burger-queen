@@ -1,28 +1,11 @@
-/* body {
-    font-family: "Delius", cursive;
-    text-decoration: none;
-    background: url(https://dalelavuelta.tv/wp-content/uploads/2021/03/En-el-laboratorio-las-mujeres-y-las-organizaciones-continuan-aprendiendo-y-adaptandose-a-los-cambios-que-es-la-clave-del-crecimiento-en-la-era-digital.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-  } */
-  /* .opacity {
-    background: #000;
-    position: absolute;
-    opacity: 50%;
-    width: 100vw;
-    height: 100vh;
-    filter: blur(4px);
-    z-index: -1;
-}*/
 .blurFormReg{
   top: 28%;
-  left: 65%;
+  left: 10%;
   background-color: #F8F9FA;
   position: absolute;
   opacity: 52%;
-  width: 30%;
-  height: 67%;
+  width: 82%;
+  height: 64%;
   border-radius: 25px;
 }
 
@@ -55,18 +38,18 @@
   grid-template-rows: repeat(25,4%);
   width: 100vw;
   height: 100vh;
-  background-image: url('../../img/burger.png');
+  background-image: url('../../img/fondoResponsive.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 .formRegister{
-  grid-column: 18/span 18;
+  grid-column: 6/span 19;
   grid-row: 8/span 18;
   display: flex;
   flex-direction: column;
-  width: 75%;
-  height: 90%;
+  width: 81%;
+  height: 85%;
   justify-content: space-around;
   z-index: 1;
   align-items: center;
@@ -77,4 +60,39 @@
   border-radius: 10px;
   font-size: 18px;
   text-align: center;
+}
+.logoReg{
+  z-index: 1;
+  background-image: url('../../img/Logo.png');
+  width: 100%;
+  height: 26%;
+  background-repeat: no-repeat;
+  grid-column: 4/span 25;
+  grid-row: 3/span 18;
+  background-size: auto;
+}
+@media (min-width: 699px) and (max-width: 1200px) {
+ .logoReg{
+    background-size: cover;
+    width: 83%;
+    grid-column: 5/span 25;
+    }
+}
+@media (min-width: 1201px) and (max-width: 5000px) {
+  .logoReg{
+    grid-column: 17/span 25;
+  }
+.blurFormReg{
+  left: 62%;
+  width: 30%;
+  height: 67%;
+}
+.divFormRegister{
+  background-image: url('../../img/burger.png');
+}
+.formRegister{
+  grid-column: 17/span 26;
+   width: 72%;
+  height: 90%;
+}
 }

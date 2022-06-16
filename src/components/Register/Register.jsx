@@ -21,6 +21,7 @@ const Register = () => {
   <div className="opacity"></div>
   <div className="divFormRegister">
   <div className="blurFormReg"></div>
+  <div className="logoReg"></div>
     <form className = "formRegister" onSubmit={register}>
     <h1>REGISTRATE</h1>
         <select className="optionsSelect">
