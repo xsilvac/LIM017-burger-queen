@@ -24,6 +24,7 @@ export const Login = () => {
     <div className="opacity"></div>
     <div className="divForm">
     <div className="blurForm"></div>
+    <div className="logo"></div>
     <form className="formLogin"  onSubmit={singIn}>
       <h1>INICIA SESIÓN</h1>
       <input

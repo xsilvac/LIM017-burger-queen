@@ -55,7 +55,10 @@
   grid-template-rows: repeat(25,4%);
   width: 100vw;
   height: 100vh;
-  background: red;
+  background-image: url('../../img/burger.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 .formRegister{
   grid-column: 18/span 18;
