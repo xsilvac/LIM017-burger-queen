@@ -1,12 +1,19 @@
-body {
-    font-family: "Delius", cursive;
-    text-decoration: none;
-    background: url("../../img/burger.png");
+*{
+  margin: 0;
+  padding: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: "Delius", cursive;
+}
+/* .backgroundPage {
+  background: url(https://dalelavuelta.tv/wp-content/uploads/2021/03/En-el-laboratorio-las-mujeres-y-las-organizaciones-continuan-aprendiendo-y-adaptandose-a-los-cambios-que-es-la-clave-del-crecimiento-en-la-era-digital.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-  }
-  .opacity {
+  } */
+  /* .opacity {
     background: #000;
     position: absolute;
     opacity: 50%;
@@ -16,15 +23,60 @@ body {
     z-index: -1;
     top :0;
     left : 0;
+}*/
+.divForm{
+  display: grid;
+  grid-template-columns: repeat(25,4%);
+  grid-template-rows: repeat(25,4%);
+  width: 100vw;
+  height: 100vh;
+  background: red;
 }
 .formLogin {
-    display: flex;
-    flex-direction: column;
-    z-index: 1;
-    align-items: flex-end;
+  grid-column: 18/span 18;
+  grid-row: 10/span 18;
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  height: 68%;
+  justify-content: space-around;
+  z-index: 1;
+  align-items: center;
+}
+.formLogin input{
+  padding: 4% 6%;
+  border-radius: 10px;
+  font-size: 18px;
+  color: black;
+  border: none;
+  text-align: center;
+}
+.formLogin h1{
+  color: rgb(41, 37, 37);
 }
 .btnLogin {
-color: #ffffff;
-padding:10px;
-background-Color: #f09014;
+  color: rgb(41, 37, 37);
+  padding: 15px;
+  background-Color: #FAA30F;
+  width: 94%;
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  font-weight: bolder;
+}
+.btnLogin:hover{
+  background-Color: #db4a30;
+  color: white;
+}
+.blurForm{
+  top: 31%;
+  left: 65%;
+  background-color: #F8F9FA;
+  position: absolute;
+  opacity: 52%;
+  width: 30%;
+  height: 52%;
+  /* z-index: revert; */
+  border-radius: 25px;
+  /* filter: blur(4px); */
 }
