@@ -47,6 +47,7 @@
   border: none;
   text-align: center;
   width: 79%;
+  position: relative;
 }
 .formLogin h1{
   color: rgb(41, 37, 37);
@@ -85,13 +86,26 @@
   grid-row: 3/span 18;
   background-size: auto;
 }
+.eyeLogin{
+  position: absolute;
+    z-index: 1;
+    background: none;
+    border: none;
+    width: 3%;
+    height: 5%;
+    left: 77%;
+    top: 56%;
+}
 @media (min-width: 499px) and (max-width: 1000px) {
   .logo{
   background-size: cover;
   width: 83%;
   grid-column: 5/span 25;
   }
-  
+  .eyeLogin{
+    left: 79%;
+    top: 57%;
+  }
 }
 @media (min-width: 1001px) and (max-width: 5000px) {
 .divForm{
@@ -113,5 +127,9 @@
   grid-column: 16/span 18;
   grid-row: 4/span 18;
   background-size: cover;
+}
+.eyeLogin{
+  left: 85%;
+  top: 58%;
 }
 }
