@@ -71,11 +71,39 @@
   grid-row: 3/span 18;
   background-size: auto;
 }
+.eyeRegister{
+  position: absolute;
+  z-index: 1;
+  background: none;
+  border: none;
+  width: 3%;
+  height: 5%;
+  left: 73%;
+  top: 57%;
+}
+.eyeRegisterConfig{
+  position: absolute;
+  z-index: 1;
+  background: none;
+  border: none;
+  width: 3%;
+  height: 5%;
+  left: 73%;
+  top: 73%;
+}
 @media (min-width: 699px) and (max-width: 1200px) {
  .logoReg{
     background-size: cover;
     width: 83%;
     grid-column: 5/span 25;
+    }
+    .eyeRegister{
+      left: 75%;
+      top: 58%;
+    }
+    .eyeRegisterConfig{
+      left: 75%;
+      top: 74%;
     }
 }
 @media (min-width: 1201px) and (max-width: 5000px) {
@@ -94,5 +122,13 @@
   grid-column: 17/span 26;
    width: 72%;
   height: 90%;
+}
+.eyeRegister{
+  left: 87%;
+  top: 60%;
+}
+.eyeRegisterConfig{
+  left: 87%;
+  top: 75%;
 }
 }

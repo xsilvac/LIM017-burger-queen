@@ -13,6 +13,7 @@ export const Login = () => {
   const [password, setPassword]= useState("");
   const [shown, setShown] = useState(false);
   const switchShown = () => setShown(!shown);
+
   const singIn = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword (auth,email,password)
@@ -44,7 +45,6 @@ export const Login = () => {
         onChange={ev => setPassword(ev.target.value)} />
       <button className="eyeLogin" onClick={switchShown}>{shown ? <FaEye size="2rem"/> : <FaEyeSlash size="2rem"/>}</button>
       <p>Mínimo 6 caracteres en la contraseña</p>
-      <button className = "btnLogin" type="submit">INGRESAR</button>
-    </form></div></>
+      <button className = "btnLogin" type="submit">INGRESAR</button>    </form></div></>
   )
 }
