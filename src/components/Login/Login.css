@@ -30,7 +30,7 @@
   grid-template-rows: repeat(25,4%);
   width: 100vw;
   height: 100vh;
-  background: red;
+  background-image: url('../../img/burger.png')
 }
 .formLogin {
   grid-column: 18/span 18;
