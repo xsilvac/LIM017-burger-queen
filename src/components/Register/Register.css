@@ -14,15 +14,64 @@
     height: 100vh;
     filter: blur(4px);
     z-index: -1;
+}*/
+.blurFormReg{
+  top: 28%;
+  left: 65%;
+  background-color: #F8F9FA;
+  position: absolute;
+  opacity: 52%;
+  width: 30%;
+  height: 67%;
+  border-radius: 25px;
 }
-.formRegister {
-    display: flex;
-    flex-direction: column;
-    z-index: 1;
-    align-items: flex-end;
+
+.formRegister input{
+  padding: 4% 6%;
+  border-radius: 10px;
+  font-size: 18px;
+  color: black;
+  border: none;
+  text-align: center;
+  width: 96%;
 }
 .btnRegister {
-color: #ffffff;
-padding:10px;
-background-Color: #f09014;
-} */
+  color: rgb(41, 37, 37);
+  padding: 15px;
+  background-Color: #FAA30F;
+  width: 108%;
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  font-weight: bolder;
+} 
+.btnRegister:hover{
+  background-Color: #db4a30;
+  color: white;
+}
+.divFormRegister{
+  display: grid;
+  grid-template-columns: repeat(25,4%);
+  grid-template-rows: repeat(25,4%);
+  width: 100vw;
+  height: 100vh;
+  background: red;
+}
+.formRegister{
+  grid-column: 18/span 18;
+  grid-row: 8/span 18;
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  height: 90%;
+  justify-content: space-around;
+  z-index: 1;
+  align-items: center;
+}
+.optionsSelect{
+  width: 108%;
+  padding: 4%;
+  border-radius: 10px;
+  font-size: 18px;
+  text-align: center;
+}

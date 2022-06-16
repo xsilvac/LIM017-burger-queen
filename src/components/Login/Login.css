@@ -30,7 +30,7 @@
   grid-template-rows: repeat(25,4%);
   width: 100vw;
   height: 100vh;
-  background: red;
+  background: url(https://dalelavuelta.tv/wp-content/uploads/2021/03/En-el-laboratorio-las-mujeres-y-las-organizaciones-continuan-aprendiendo-y-adaptandose-a-los-cambios-que-es-la-clave-del-crecimiento-en-la-era-digital.jpg);
 }
 .formLogin {
   grid-column: 18/span 18;
@@ -50,6 +50,7 @@
   color: black;
   border: none;
   text-align: center;
+  width: 100%;
 }
 .formLogin h1{
   color: rgb(41, 37, 37);
@@ -58,7 +59,7 @@
   color: rgb(41, 37, 37);
   padding: 15px;
   background-Color: #FAA30F;
-  width: 94%;
+  width: 111%;
   border-radius: 10px;
   border: none;
   font-size: 18px;
@@ -76,7 +77,5 @@
   opacity: 52%;
   width: 30%;
   height: 52%;
-  /* z-index: revert; */
   border-radius: 25px;
-  /* filter: blur(4px); */
 }
