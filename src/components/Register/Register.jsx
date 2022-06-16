@@ -68,7 +68,6 @@ const Register = () => {
         <button className="eyeRegisterConfig" onClick={switchShownConfirm}>{shownConfirm ? <FaEye size="2rem"/> : <FaEyeSlash size="2rem"/>}</button>
         <button className ="btnRegister" type="submit">Registrar</button>
     </form></div></>
-  
   );
 };
 export default Register;
