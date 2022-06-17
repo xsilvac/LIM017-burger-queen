@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import './Register.css';
 import  errorAuthFirebase from "../../firebaseConfig/messajeError.js"
 import {FaEye,FaEyeSlash} from "react-icons/fa"
+import Swal from "sweetalert2";
 
 const Register = () => {
     const navigate=useNavigate();
@@ -21,9 +22,18 @@ const Register = () => {
   const register = (e) => { 
     e.preventDefault();
     createUserWithEmailAndPassword(auth,email,password)
-    .then(auth => navigate ('/'))
-    .catch(err => console.log("holaaaaa",errorAuthFirebase[err.code]))
-    //.catch(err=>console.log(err.code))
+    .then(auth =>{  navigate ('/')
+      Swal.fire({
+        imageUrl: "https://c.tenor.com/l3_KagIYSOgAAAAC/yes-happy.gif",
+        title:"Felicidades ya te encuentras registrado",
+      })
+    })
+    .catch(err => {
+      Swal.fire({
+        icon: 'warning',
+        title: errorAuthFirebase[err.code],
+      })
+    })
   }
   return (
   <><div className="backgroundPage"></div>
@@ -68,6 +78,7 @@ const Register = () => {
         <button className="eyeRegisterConfig" onClick={switchShownConfirm}>{shownConfirm ? <FaEye size="2rem"/> : <FaEyeSlash size="2rem"/>}</button>
         <button className ="btnRegister" type="submit">Registrar</button>
     </form></div></>
+  
   );
 };
 export default Register;
