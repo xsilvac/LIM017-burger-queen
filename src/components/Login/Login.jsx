@@ -1,10 +1,12 @@
 import {useState} from "react";
 import{signInWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../../firebaseConfig/FirebaseConfig";
+import {useAuthState} from "react-firebase-hooks/auth";
 import {useNavigate} from "react-router-dom";
 import './Login.css';
 import  errorAuthFirebase from "../../firebaseConfig/messajeError";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Swal from 'sweetalert2';
 
 
 export const Login = () => {
@@ -17,9 +19,19 @@ export const Login = () => {
   const singIn = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword (auth,email,password)
-    .then(auth => navigate ('/Menu'))
-    .catch(err => console.log("holaaaaa",errorAuthFirebase[err.code]));
-
+    .then(auth => {
+      navigate ('/Menu')
+      Swal.fire({
+        imageUrl: 'https://i.gifer.com/YsHW.gif',
+        title: 'Bienvenido' + auth.email,
+      })
+    })
+    .catch(err => {
+      Swal.fire({
+        icon: 'warning',
+        title: errorAuthFirebase[err.code],
+      })
+    });
   }
   
   return (
