@@ -18,7 +18,6 @@ const Register = () => {
   const switchShownConfirm = () => setShownConfirm(!shownConfirm);
   
   
-
   const register = (e) => { 
     e.preventDefault();
     createUserWithEmailAndPassword(auth,email,password)
