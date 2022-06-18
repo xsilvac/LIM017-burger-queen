@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter,Routes, Route } from "react-router-dom";
 import { Menu } from "./components/Menu/Menu";
-import { Login } from "./components/Login/Login";
-import { Kitchen } from "./components/Kitchen/Kitchen";
+import { Login } from "./page/Login/Login.jsx";
+import { Kitchen } from "./page/Kitchen/Kitchen.jsx";
 import Register from "./components/Register/Register";
-
+import AddProducts from "./components/AddProducts/AddProducts.jsx";
 
 export function App() {
   return (
@@ -15,6 +15,7 @@ export function App() {
         <Route path="Menu" element={<Menu />} />
         <Route path="Kitchen" element={<Kitchen />} />
         <Route path="Register" element={<Register />} />
+        <Route path="AddProducts" element={< AddProducts />} />
       </Routes>
       </BrowserRouter>
 
