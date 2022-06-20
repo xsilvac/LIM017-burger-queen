@@ -13,9 +13,15 @@ const Register = () => {
   const [password, setPassword]= useState('');
   const [confirmPassword, setConfirmPassword]= useState('');
   const [shown, setShown] = useState(false);
-  const switchShown = () => setShown(!shown);
   const [shownConfirm, setShownConfirm] = useState(false);
-  const switchShownConfirm = () => setShownConfirm(!shownConfirm);
+
+  const switchShown = () => setShown(!shown)
+  //  e.preventDefault()
+  
+  
+  const switchShownConfirm = () => setShownConfirm(!shownConfirm)
+  //e.preventDefault();
+  
   
   
   const register = (e) => { 
@@ -64,7 +70,7 @@ const Register = () => {
         placeholder="*************"
         onChange={ev => setPassword(ev.target.value)}
         />
-         <button className="eyeRegister" onClick={switchShown}>{shown ? <FaEye size="2rem"/> : <FaEyeSlash size="2rem"/>}</button>
+         <button type="button" className="eyeRegister" onClick={switchShown}>{shown ? <FaEye size="2rem"/> : <FaEyeSlash size="2rem"/>}</button>
         <p>Mínimo 6 caracteres en la contraseña</p>
         <input
         type={shownConfirm ? 'text' : 'password'}
@@ -74,7 +80,7 @@ const Register = () => {
         placeholder="*************"
         onChange={ev => setConfirmPassword(ev.target.value)} 
         />
-        <button className="eyeRegisterConfig" onClick={switchShownConfirm}>{shownConfirm ? <FaEye size="2rem"/> : <FaEyeSlash size="2rem"/>}</button>
+        <button type="button" className="eyeRegisterConfig" onClick={switchShownConfirm}>{shownConfirm ? <FaEye size="2rem"/> : <FaEyeSlash size="2rem"/>}</button>
         <button className ="btnRegister" type="submit">Registrar</button>
     </form></div></>
   
