@@ -56,7 +56,7 @@ export const Login = () => {
         autoComplete="off"
         placeholder="contraseña"
         onChange={ev => setPassword(ev.target.value)} />
-      <button className="eyeLogin" onClick={switchShown}>{shown ? <FaEye size="2rem"/> : <FaEyeSlash size="2rem"/>}</button>
+      <button type="button" className="eyeLogin" onClick={switchShown}>{shown ? <FaEye size="2rem"/> : <FaEyeSlash size="2rem"/>}</button>
       <p>Mínimo 6 caracteres en la contraseña</p>
       <button className = "btnLogin" type="submit">INGRESAR</button>    </form></div></>
   )
