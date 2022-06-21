@@ -1,7 +1,7 @@
 import {useState} from "react";
 import{signInWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../../firebaseConfig/FirebaseConfig";
-import {useAuthState} from "react-firebase-hooks/auth";
+// import {useAuthState} from "react-firebase-hooks/auth";
 import {useNavigate} from "react-router-dom";
 import './Login.css';
 import  errorAuthFirebase from "../../firebaseConfig/messajeError";
@@ -45,15 +45,16 @@ export const Login = () => {
       <input
         type="email"
         name="userEmail"
+        data-testid="userEmail"
         autoComplete="off"
-        placeholder="ejemplo@burgerboss.com"
+        placeholder="Email"
         onChange={ev => setEmail(ev.target.value)} />
         <p></p>
       <input
         type={shown ? 'text' : 'password'}
         name="password"
         autoComplete="off"
-        placeholder="*************"
+        placeholder="contraseña"
         onChange={ev => setPassword(ev.target.value)} />
       <button type="button" className="eyeLogin" onClick={switchShown}>{shown ? <FaEye size="2rem"/> : <FaEyeSlash size="2rem"/>}</button>
       <p>Mínimo 6 caracteres en la contraseña</p>

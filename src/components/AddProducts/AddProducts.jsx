@@ -7,6 +7,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { collection, addDoc } from "firebase/firestore";
+import './AddProducts.css';
 
 const AddProducts = () => {
   const [ProductName, setProductName] = useState("");
@@ -66,12 +67,19 @@ const AddProducts = () => {
   };
 
   return (
-    <div className="container">
-      <br />
-      <h2>ADD PRODUCTS</h2>
-      <hr />
+    <div className="containerAddProducts">
+      <div className="containerEmpty"></div>
+
       <form autoComplete="off" className="form-group" onSubmit={addProduct}>
-        <label htmlFor="product-name">Product Name</label>
+      <h2>AGREGAR PRODUCTOS</h2>
+      <br />
+      <select className="optionsSelectMenu">
+            <option isDisabled >Menu</option> 
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+        </select>
+        <br />
+        <label htmlFor="product-name">Nombre del producto</label>
         <input
           type="text"
           className="form-control"
@@ -80,7 +88,7 @@ const AddProducts = () => {
           value={ProductName}
         />
         <br />
-        <label htmlFor="product-price">Product Price</label>
+        <label htmlFor="product-price">Precio del producto</label>
         <input
           type="number"
           className="form-control"
@@ -89,20 +97,21 @@ const AddProducts = () => {
           value={ProductPrice}
         />
         <br />
-        <label htmlFor="product-img">Product Image</label>
+        <label htmlFor="product-img">Imagen del producto</label>
         <input
           type="file"
-          className="form-control"
+          className="form-control-img"
           id="file"
           required
           onChange={productImgHandler}
         />
+         {error && <span className="error-msg">{error}</span>}
         <br />
-        <button type="submit" className="btn btn-success btn-md mybtn">
-          ADD
+
+        <button type="submit" className="btn-add">
+          Agregar
         </button>
       </form>
-      {error && <span className="error-msg">{error}</span>}
     </div>
   );
 };
