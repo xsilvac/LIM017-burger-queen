@@ -14,6 +14,7 @@ const AddProducts = () => {
   const [ProductPrice, setProductPrice] = useState(0);
   const [ProductImg, setProductImg] = useState(null);
   const [error, setError] = useState("");
+  const [typeOp, setTypeOp] = useState('');
 
   const types = ["image/png", "image/jpeg"]; // image types
 
@@ -27,7 +28,9 @@ const AddProducts = () => {
       setError("Please select a valid image type (jpg or png)");
     }
   };
-
+  const captureType = (e) => {
+    setTypeOp(e.target.value);
+}
   const addProduct = (e) => {
     e.preventDefault();
     const storage = getStorage();
@@ -47,19 +50,35 @@ const AddProducts = () => {
       () => {
         // Upload completed successfully, now we can get the download URL
         getDownloadURL(uploadTask.snapshot.ref)
+        
           .then(async (url) => {
-            const docRef = await addDoc(collection(db, "Breakfast"), {
-              ProductName: ProductName,
-              ProductPrice: Number(ProductPrice),
-              ProductImg: url,
-            }).then (()=>{
-              setProductName("");
-              setProductPrice(0);
-              setProductImg("");
-              setError("");
-              document.getElementById("file").value="";
-            }).catch (err=>setError(err.message));
-            console.log("Document written with ID: ", docRef.id);
+            if(typeOp === 'breakfast'){
+              const docRef = await addDoc(collection(db, "Breakfast"), {
+                ProductName: ProductName,
+                ProductPrice: Number(ProductPrice),
+                ProductImg: url,
+              }).then (()=>{
+                setProductName("");
+                setProductPrice(0);
+                setProductImg("");
+                setError("");
+                document.getElementById("file").value="";
+              }).catch (err=>setError(err.message));
+              console.log("Document written with ID: ", docRef.id);
+            }else{
+              const docRef = await addDoc(collection(db, "Lunch"), {
+                ProductName: ProductName,
+                ProductPrice: Number(ProductPrice),
+                ProductImg: url,
+              }).then (()=>{
+                setProductName("");
+                setProductPrice(0);
+                setProductImg("");
+                setError("");
+                document.getElementById("file").value="";
+              }).catch (err=>setError(err.message));
+              console.log("Document written with ID: ", docRef.id);
+            }
           })
           .catch((err) => console.log(err));
       }
@@ -73,10 +92,10 @@ const AddProducts = () => {
       <form autoComplete="off" className="form-group" onSubmit={addProduct}>
       <h2>AGREGAR PRODUCTOS</h2>
       <br />
-      <select className="optionsSelectMenu">
+      <select className="optionsSelectMenu" onChange={captureType}>
             <option isDisabled >Menu</option> 
-            <option value="breakfast">Breakfast</option>
-            <option value="lunch">Lunch</option>
+            <option value='breakfast'>Breakfast</option>
+            <option value='lunch'>Lunch</option>
         </select>
         <br />
         <label htmlFor="product-name">Nombre del producto</label>

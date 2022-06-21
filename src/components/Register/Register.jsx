@@ -24,21 +24,29 @@ const Register = () => {
   
   
   
-  const register = (e) => { 
+  const register = (e) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(auth,email,password)
-    .then(auth =>{  navigate ('/')
-      Swal.fire({
-        imageUrl: "https://c.tenor.com/l3_KagIYSOgAAAAC/yes-happy.gif",
-        title:"Felicidades ya te encuentras registrado",
+    if(password === confirmPassword){
+      createUserWithEmailAndPassword(auth,email,password)
+      .then(auth =>{  navigate ('/')
+        Swal.fire({
+          imageUrl: "https://c.tenor.com/l3_KagIYSOgAAAAC/yes-happy.gif",
+          title:"Felicidades ya te encuentras registrado",
+        })
       })
-    })
-    .catch(err => {
+      .catch(err => {
+        Swal.fire({
+          icon: 'warning',
+          title: errorAuthFirebase[err.code],
+        })
+      })
+    } else {
       Swal.fire({
         icon: 'warning',
-        title: errorAuthFirebase[err.code],
+        title: 'Las contraseñas no coinciden',
       })
-    })
+    }
+   
   }
   return (
   <><div className="backgroundPage"></div>
