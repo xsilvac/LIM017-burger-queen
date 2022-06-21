@@ -3,7 +3,7 @@ import{createUserWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../../firebaseConfig/FirebaseConfig";
 import {useNavigate} from "react-router-dom";
 import './Register.css';
-import  errorAuthFirebase from "../../firebaseConfig/messajeError.js"
+import  errorAuthFirebase from "../../firebaseConfig/messajeError.jsx"
 import {FaEye,FaEyeSlash} from "react-icons/fa"
 import Swal from "sweetalert2";
 

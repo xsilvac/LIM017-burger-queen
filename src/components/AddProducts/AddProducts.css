@@ -1,0 +1,154 @@
+.containerAddProducts{
+    display: grid;
+    grid-template-columns: repeat(25,4%);
+    grid-template-rows: repeat(25,4%);
+    background: rgb(250,163,15);
+    background: radial-gradient(circle, rgba(250,163,15,1) 0%, rgba(255,255,255,1) 100%);
+    width: 100vw;
+        height:100vh;
+    }
+    .containerEmpty{
+        background: #fff;
+        position: absolute;
+        opacity: 60%;
+        width: 84%;
+        height: 66%;
+        filter: blur(1px);
+        top: 12%;
+        left: 9%;
+        border-radius: 22px;
+    }
+    
+    .form-group{
+        grid-column: 4/span 17;
+        grid-row: 6/span 18;
+        display: flex;
+        width: 113%;
+        height: 73%;
+        justify-content: flex-end;
+        z-index: 1;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .form-control-img{
+        background-color: white;
+        width: 94%;
+        height: 42%;
+        padding: 13px 5px 34px 5px;
+        border-radius: 12px;
+        border: none;
+        text-align: center;
+        color: black;
+    }
+    .form-control {
+        background-color: white;
+        width: 85%;
+        height: 34%;
+        padding: 16px;
+        border-radius: 12px;
+        border: none;
+        text-align: center;
+        color: black;
+    }
+    .error-msg{
+        color: red;
+    }
+    .btn-add{
+        color: rgb(41, 37, 37);
+        padding: 13px;
+        background-Color: #FAA30F;
+        width: 92%;
+        border-radius: 10px;
+        border: none;
+        font-size: 18px;
+        font-weight: bolder;
+    }
+    .btn-add:hover{
+      background-Color: #db4a30;
+      color: white;
+    
+    }
+    .form-group h2 {
+    color: rgb(76, 75, 75);
+    }
+    .optionsSelectMenu{
+        width: 92%;
+        padding: 3.5%;
+        border-radius: 10px;
+        border: none;
+        font-size: large;
+    }
+    
+@media (min-width: 499px) and (max-width: 1000px)
+{
+        .containerEmpty{
+            width: 71%;
+            height: 72%;
+            top: 16%;
+            left: 15.5%;
+        }
+        .form-group{
+            height: 87%;
+        }
+        
+        .form-control-img{
+            width: 60%;
+            padding: 26px 5px 30px 132px;
+        }
+        .form-control {
+            width: 77%;
+            padding: 19px;
+            font-size: large;
+        }
+        .btn-add{
+            padding: 16px;
+            width: 82%;
+            font-size: 25px;
+        }
+        .optionsSelectMenu{
+            width: 58%;
+            padding: 2.8%;
+           
+        }
+        .form-group label {
+            font-size:20px;
+        }
+}
+
+@media (min-width: 1001px) and (max-width: 5000px)
+{
+
+        .containerEmpty{
+            width: 54%;
+            height: 85%;
+            top: 8%;
+            left: 24.5%;
+        }  
+        .form-group{
+            width: 115%;
+            height: 93%;
+            align-content: stretch;
+        }
+        .form-control-img{
+            width: 44%;
+            padding: 14px 0px 39px 152px;
+                    }
+        .form-control {
+            width: 53%;
+            padding: 20px;
+            font-size: large;
+        }
+        .btn-add{
+            width: 56%;
+            font-size: 25px;
+        }
+        .optionsSelectMenu{
+            width: 57%;
+            padding: 1.5%;
+        }
+        .form-group label {
+            font-size:20px;
+        }      
+}
