@@ -11,7 +11,6 @@ import {
   MobileIcon,
 } from "./Navbar.elements";
 import {
-  FaHotdog,
   FaBars,
   FaTimes,
   FaHome,
@@ -21,8 +20,7 @@ import {
 } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import logo1 from "../../img/logo1.png"
-import AddProducts from "../AddProducts/AddProducts";
-import Register from "../Register/Register";
+
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const navigate = useNavigate();
@@ -41,7 +39,7 @@ const Navbar = () => {
 
           <Menu open={showMobileMenu}>
             <MenuItem>
-              <MenuItemLink onClick={() => navigate("/Menu")}>
+              <MenuItemLink onClick={() => navigate("/Products")}>
                 <div>
                   <FaHome />
                   Menu

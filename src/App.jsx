@@ -5,6 +5,7 @@ import { Login } from "./page/Login/Login.jsx";
 import { Kitchen } from "./page/Kitchen/Kitchen.jsx";
 import Register from "./components/Register/Register";
 import AddProducts from "./components/AddProducts/AddProducts.jsx";
+import Products from "./components/Products/Products"
 import Manager from "./page/Manager/Manager"
 
 export function App() {
@@ -17,6 +18,7 @@ export function App() {
         <Route path="Kitchen" element={<Kitchen />} />
         <Route path="Register" element={<Register />} />
         <Route path="AddProducts" element={< AddProducts />} />
+        <Route path="Products" element={< Products />} />
         <Route path="Manager" element={< Manager />} />
       </Routes>
       </BrowserRouter>

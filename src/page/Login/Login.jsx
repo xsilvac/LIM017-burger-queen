@@ -20,10 +20,10 @@ export const Login = () => {
     e.preventDefault();
     signInWithEmailAndPassword (auth,email,password)
     .then(auth => {
-      navigate ('/Menu')
+      navigate ('/Products')
       Swal.fire({
         imageUrl: 'https://i.gifer.com/YsHW.gif',
-        title: 'Bienvenido' + auth.email,
+        title: 'Bienvenido',
       })
     })
     .catch(err => {
