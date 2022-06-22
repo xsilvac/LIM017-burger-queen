@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { db } from "../../firebaseConfig/FirebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 import './Products.css';
+import Navbar from "../Navbar/Navbar"
 
 const Products = () => {
 const [list, setList] = useState([]);
@@ -23,6 +24,7 @@ useEffect(() => {
 }, [list])
 
   return (
+    <><Navbar />
     <div className='containerProductsFirst'>
         <div className='containerProducts'>
             {
@@ -35,7 +37,7 @@ useEffect(() => {
                 ))
             }
         </div>
-    </div>
+    </div></>
   )
 }
 export default Products;
