@@ -8,6 +8,7 @@ import {
 } from "firebase/storage";
 import { collection, addDoc } from "firebase/firestore";
 import './AddProducts.css';
+import Navbar from "../Navbar/Navbar";
 
 const AddProducts = () => {
   const [ProductName, setProductName] = useState("");
@@ -86,52 +87,51 @@ const AddProducts = () => {
   };
 
   return (
-    <div className="containerAddProducts">
-      <div className="containerEmpty"></div>
+    <><>
+      <Navbar />
+    </><div className="containerAddProducts">
+        <div className="containerEmpty"></div>
 
-      <form autoComplete="off" className="form-group" onSubmit={addProduct}>
-      <h2>AGREGAR PRODUCTOS</h2>
-      <br />
-      <select className="optionsSelectMenu" onChange={captureType}>
-            <option isDisabled >Menu</option> 
+        <form autoComplete="off" className="form-group" onSubmit={addProduct}>
+          <h2>AGREGAR PRODUCTOS</h2>
+          <br />
+          <select className="optionsSelectMenu" onChange={captureType}>
+            <option isDisabled>Menu</option>
             <option value='breakfast'>Breakfast</option>
             <option value='lunch'>Lunch</option>
-        </select>
-        <br />
-        <label htmlFor="product-name">Nombre del producto</label>
-        <input
-          type="text"
-          className="form-control"
-          required
-          onChange={(e) => setProductName(e.target.value)}
-          value={ProductName}
-        />
-        <br />
-        <label htmlFor="product-price">Precio del producto</label>
-        <input
-          type="number"
-          className="form-control"
-          required
-          onChange={(e) => setProductPrice(e.target.value)}
-          value={ProductPrice}
-        />
-        <br />
-        <label htmlFor="product-img">Imagen del producto</label>
-        <input
-          type="file"
-          className="form-control-img"
-          id="file"
-          required
-          onChange={productImgHandler}
-        />
-         {error && <span className="error-msg">{error}</span>}
-        <br />
+          </select>
+          <br />
+          <label htmlFor="product-name">Nombre del producto</label>
+          <input
+            type="text"
+            className="form-control"
+            required
+            onChange={(e) => setProductName(e.target.value)}
+            value={ProductName} />
+          <br />
+          <label htmlFor="product-price">Precio del producto</label>
+          <input
+            type="number"
+            className="form-control"
+            required
+            onChange={(e) => setProductPrice(e.target.value)}
+            value={ProductPrice} />
+          <br />
+          <label htmlFor="product-img">Imagen del producto</label>
+          <input
+            type="file"
+            className="form-control-img"
+            id="file"
+            required
+            onChange={productImgHandler} />
+          {error && <span className="error-msg">{error}</span>}
+          <br />
 
-        <button type="submit" className="btn-add">
-          Agregar
-        </button>
-      </form>
-    </div>
+          <button type="submit" className="btn-add">
+            Agregar
+          </button>
+        </form>
+      </div></>
   );
 };
 export default AddProducts;

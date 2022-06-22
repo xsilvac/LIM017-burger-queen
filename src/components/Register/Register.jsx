@@ -6,6 +6,7 @@ import './Register.css';
 import  errorAuthFirebase from "../../firebaseConfig/messajeError.jsx"
 import {FaEye,FaEyeSlash} from "react-icons/fa"
 import Swal from "sweetalert2";
+import Navbar from "../Navbar/Navbar"
 
 const Register = () => {
     const navigate=useNavigate();
@@ -49,48 +50,44 @@ const Register = () => {
    
   }
   return (
-  <><div className="backgroundPage"></div>
-  <div className="opacity"></div>
-  <div className="divFormRegister">
-  <div className="blurFormReg"></div>
-  <div className="logoReg"></div>
-    <form className = "formRegister" onSubmit={register}>
-    <h1>REGISTRATE</h1>
-        <select className="optionsSelect">
-            <option isDisabled >Cargo</option> 
+    <><Navbar />
+    <><div className="backgroundPage"></div>
+      <div className="divFormRegister">
+        <div className="blurFormReg"></div>
+        <form className="formRegister" onSubmit={register}>
+          <h1>CREAR USUARIO</h1>
+          <select className="optionsSelect">
+            <option isDisabled>Cargo</option>
             <option value="managger">Administrador</option>
             <option value="chef">Cocinero</option>
             <option value="waiter">Mesero</option>
-        </select>
-        <input
-        type="email"
-        name="nameNewUser"
-        value={email}
-        autoComplete='off'
-        placeholder="ejemplo@burgerboss.com"
-        onChange={ev => setEmail(ev.target.value)}
-        />
-        <input
-        type={shown ? 'text' : 'password'}
-        name="passwordNewUser"
-        value={password}
-        autoComplete='off'
-        placeholder="*************"
-        onChange={ev => setPassword(ev.target.value)}
-        />
-         <button type="button" className="eyeRegister" onClick={switchShown}>{shown ? <FaEye size="2rem"/> : <FaEyeSlash size="2rem"/>}</button>
-        <p>Mínimo 6 caracteres en la contraseña</p>
-        <input
-        type={shownConfirm ? 'text' : 'password'}
-        name="passwordConfirmation"
-        value ={confirmPassword}
-        autoComplete='off'
-        placeholder="*************"
-        onChange={ev => setConfirmPassword(ev.target.value)} 
-        />
-        <button type="button" className="eyeRegisterConfig" onClick={switchShownConfirm}>{shownConfirm ? <FaEye size="2rem"/> : <FaEyeSlash size="2rem"/>}</button>
-        <button className ="btnRegister" type="submit">Registrar</button>
-    </form></div></>
+          </select>
+          <input
+            type="email"
+            name="nameNewUser"
+            value={email}
+            autoComplete='off'
+            placeholder="ejemplo@burgerboss.com"
+            onChange={ev => setEmail(ev.target.value)} />
+          <input
+            type={shown ? 'text' : 'password'}
+            name="passwordNewUser"
+            value={password}
+            autoComplete='off'
+            placeholder="*************"
+            onChange={ev => setPassword(ev.target.value)} />
+          <button type="button" className="eyeRegister" onClick={switchShown}>{shown ? <FaEye size="2rem" /> : <FaEyeSlash size="2rem" />}</button>
+          <p>Mínimo 6 caracteres en la contraseña</p>
+          <input
+            type={shownConfirm ? 'text' : 'password'}
+            name="passwordConfirmation"
+            value={confirmPassword}
+            autoComplete='off'
+            placeholder="*************"
+            onChange={ev => setConfirmPassword(ev.target.value)} />
+          <button type="button" className="eyeRegisterConfig" onClick={switchShownConfirm}>{shownConfirm ? <FaEye size="2rem" /> : <FaEyeSlash size="2rem" />}</button>
+          <button className="btnRegister" type="submit">Registrar</button>
+        </form></div></></>
   
   );
 };
