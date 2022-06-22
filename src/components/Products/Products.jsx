@@ -31,8 +31,9 @@ useEffect(() => {
                 list.map(list => (
                     <div key={list.id} className='containerCard'>
                         <p className='productName'>{list.ProductName}</p>
-                        <p className='productPrice'>Precio: {list.ProductPrice}</p>
+                        <p className='productPrice'>Precio: ${list.ProductPrice}</p>
                         <img className='productImg'src={list.ProductImg} alt='' />
+                        <p></p>
                     </div>
                 ))
             }
