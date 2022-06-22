@@ -1,7 +1,7 @@
 import {useState} from "react";
 import{createUserWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../../firebaseConfig/FirebaseConfig";
-import {useNavigate} from "react-router-dom";
+//import {useNavigate} from "react-router-dom";
 import './Register.css';
 import  errorAuthFirebase from "../../firebaseConfig/messajeError.jsx"
 import {FaEye,FaEyeSlash} from "react-icons/fa"
@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 import Navbar from "../Navbar/Navbar"
 
 const Register = () => {
-    const navigate=useNavigate();
+    //const navigate=useNavigate();
   const [email, setEmail]= useState('');
   const [password, setPassword]= useState('');
   const [confirmPassword, setConfirmPassword]= useState('');
@@ -29,10 +29,10 @@ const Register = () => {
     e.preventDefault();
     if(password === confirmPassword){
       createUserWithEmailAndPassword(auth,email,password)
-      .then(auth =>{  navigate ('/')
+      .then(auth =>{
         Swal.fire({
           imageUrl: "https://c.tenor.com/l3_KagIYSOgAAAAC/yes-happy.gif",
-          title:"Felicidades ya te encuentras registrado",
+          title:"Felicidades, usuario registrado",
         })
       })
       .catch(err => {

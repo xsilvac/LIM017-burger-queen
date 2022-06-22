@@ -4,7 +4,7 @@
     grid-template-rows: repeat(25,4%);
 background-color: rgb(241, 234, 234);
     width: 100vw;
-    height:100vh;
+    height: 87vh;
     }
     .containerEmpty{
         background: #fff;
@@ -129,16 +129,16 @@ background-color: rgb(241, 234, 234);
 {
 
         .containerEmpty{
-                width: 41%;
-                height: 76%;
-                top: 18%;
-                left: 31.5%;
+            width: 33%;
+            height: 81%;
+            top: 18%;
+            left: 31.5%;
         }  
         .form-group{
-            grid-column: 4/span 17;
+            grid-column: 4/span 18;
             grid-row: 3/span 18;
             display: flex;
-            width: 119%;
+            width: 100%;
             z-index: 1;
             text-align: center;
             flex-direction: column;
@@ -146,9 +146,9 @@ background-color: rgb(241, 234, 234);
             justify-content: flex-start;
         }
         .form-control-img{
-            width: 29%;
-            padding: 14px 0px 37px 152px
-                    }
+            width: 34%;
+            padding: 14px 0px 37px 74px;
+        }
         .form-control {
             width: 39%;
             padding: 14px;
@@ -163,7 +163,6 @@ background-color: rgb(241, 234, 234);
             padding: 1.3%;
         }
         .form-group label {
-            font-size:20px;
-        }   
-           
+            font-size:18px;
+        }
 }

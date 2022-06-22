@@ -97,8 +97,8 @@ const AddProducts = () => {
           <br />
           <select className="optionsSelectMenu" onChange={captureType}>
             <option isDisabled>Menu</option>
-            <option value='breakfast'>Breakfast</option>
-            <option value='lunch'>Lunch</option>
+            <option value='breakfast'>Desayuno</option>
+            <option value='lunch'>Almuerzo</option>
           </select>
           <br />
           <label htmlFor="product-name">Nombre del producto</label>
