@@ -41,7 +41,7 @@ h1 {
   grid-template-columns: repeat(25,4%);
   grid-template-rows: repeat(25,4%);
   width: 100vw;
-  height: 100vh;
+  height: 87vh;
   background-color: rgb(241, 234, 234);
 }
 .formRegister{
@@ -193,7 +193,7 @@ p {
   display: flex;
   flex-direction: column;
   width: 54%;
-  height: 77%;
+  height: 105%;
   justify-content: space-around;
   z-index: 1;
   align-items: center;
@@ -205,8 +205,8 @@ p {
   border: none;
   width: 3%;
   height: -1%;
-  left: 58%;
-  top: -2%;
+  left: 59%;
+  top: 22%;
 }
 .eyeRegisterConfig{
   position: absolute;
@@ -215,19 +215,19 @@ p {
   border: none;
   width: 3%;
   height: 5%;
-  left: 58%;
-  top: 55%;
+  left: 59%;
+  top: 74%;
 }
 .btnRegister {
   color: rgb(41, 37, 37);
-  padding: 18px;
+  padding: 11px 18px;
   background-Color: #FAA30F;
   width: 81%;
   border-radius: 10px;
   border: none;
-  font-size: 10px;
   font-weight: bolder;
-  font-size: 89%;
+  font-size: 19px;
+
 }
 .optionsSelect {
   width: 80%;
