@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter,Routes, Route } from "react-router-dom";
-import { Menu } from "./components/Menu/Menu";
-import { Login } from "./page/Login/Login.jsx";
-import { Kitchen } from "./page/Kitchen/Kitchen.jsx";
+import Menu from "./components/Menu/Menu";
+import Login from "./page/Login/Login";
+import Kitchen from "./page/Kitchen/Kitchen";
 import Register from "./components/Register/Register";
-import AddProducts from "./components/AddProducts/AddProducts.jsx";
-import Products from "./components/Products/Products"
-import Manager from "./page/Manager/Manager"
+import AddProducts from "./components/AddProducts/AddProducts";
+import Products from "./components/Products/Products";
+import Manager from "./page/Manager/Manager";
 
 export function App() {
   return (

@@ -57,7 +57,7 @@ const Register = () => {
         <form className="formRegister" onSubmit={register}>
           <h1>CREAR USUARIO</h1>
           <select className="optionsSelect">
-            <option isDisabled>Cargo</option>
+            <option isdisabled="true">Cargo</option>
             <option value="managger">Administrador</option>
             <option value="chef">Cocinero</option>
             <option value="waiter">Mesero</option>
