@@ -9,7 +9,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from 'sweetalert2';
 
 
-export const Login = () => {
+const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail]= useState("");
   const [password, setPassword]= useState("");
@@ -61,3 +61,4 @@ export const Login = () => {
       <button className = "btnLogin" type="submit">INGRESAR</button>    </form></div></>
   )
 }
+export default Login;

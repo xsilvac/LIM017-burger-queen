@@ -17,7 +17,7 @@ const AddProducts = () => {
   const [error, setError] = useState("");
   const [typeOp, setTypeOp] = useState('');
 
-  const types = ["image/png", "image/jpeg"]; // image types
+  const types = ["image/png"]; // image types
 
   const productImgHandler = (e) => {
     let selectedFile = e.target.files[0];
@@ -34,24 +34,14 @@ const AddProducts = () => {
 }
   const addProduct = (e) => {
     e.preventDefault();
-    const storage = getStorage();
-    // Create the file metadata
-    /** @type {any} */
     const metadata = {
-      contentType: "images/png",
+   contentType: "images/png",
     };
-
-    // Upload file and metadata to the object 'images/mountains.jpg'
+    const storage = getStorage();
     const storageRef = ref(storage, "images/" + ProductImg.name);
-    const uploadTask = uploadBytesResumable(storageRef, ProductImg, metadata);
 
-    // Listen for state changes, errors, and completion of the upload.
-    uploadTask.on(
-      "state_changed",
-      () => {
-        // Upload completed successfully, now we can get the download URL
-        getDownloadURL(uploadTask.snapshot.ref)
-        
+    const uploadTask = uploadBytesResumable(storageRef, ProductImg, metadata);
+    getDownloadURL(uploadTask.snapshot.ref)
           .then(async (url) => {
             if(typeOp === 'breakfast'){
               const docRef = await addDoc(collection(db, "Breakfast"), {
@@ -77,26 +67,25 @@ const AddProducts = () => {
                 setProductImg("");
                 setError("");
                 document.getElementById("file").value="";
-              }).catch (err=>setError(err.message));
-              console.log("Document written with ID: ", docRef.id);
+                console.log('id', docRef.id)
+              }).catch (err=> {setError(err.message)
+                console.log("Document written with ID: ", err.message )
+              });
             }
           })
-          .catch((err) => console.log(err));
+          .catch((err) => console.log(err, 'cayo en el ultimo error'));
       }
-    );
-  };
-
   return (
     <><>
       <Navbar />
     </><div className="containerAddProducts">
         <div className="containerEmpty"></div>
 
-        <form autoComplete="off" className="form-group" onSubmit={addProduct}>
+        <form autoComplete="off" className="form-group">
           <h2>AGREGAR PRODUCTOS</h2>
           <br />
           <select className="optionsSelectMenu" onChange={captureType}>
-            <option isDisabled>Menu</option>
+            <option isdisabled="true">Menu</option>
             <option value='breakfast'>Desayuno</option>
             <option value='lunch'>Almuerzo</option>
           </select>
@@ -127,7 +116,7 @@ const AddProducts = () => {
           {error && <span className="error-msg">{error}</span>}
           <br />
 
-          <button type="submit" className="btn-add">
+          <button className="btn-add" onClick={e => addProduct(e)}>
             Agregar
           </button>
         </form>
