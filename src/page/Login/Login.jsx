@@ -20,10 +20,11 @@ const Login = () => {
     e.preventDefault();
     signInWithEmailAndPassword (auth,email,password)
     .then(auth => {
+      console.log(auth.user.email.slice(-5), auth.user.email.slice(-1), auth.user.email.slice(0, auth.user.email.length - 8))
       navigate ('/Products')
       Swal.fire({
         imageUrl: 'https://i.gifer.com/YsHW.gif',
-        title: 'Bienvenido',
+        title: 'Bienvenid@ '+ auth.user.email.slice(0,1).toUpperCase() + auth.user.email.slice(1, auth.user.email.length - 15),
       })
     })
     .catch(err => {

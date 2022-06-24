@@ -68,7 +68,7 @@ const AddProducts = () => {
                 setError("");
                 document.getElementById("file").value="";
               }).catch (err=> {setError(err.message)
-                console.log("Document written with ID: ", docRef.id )
+                console.log("Document written with ID: ", docRef.id)
               });
             }
           })
@@ -114,6 +114,7 @@ const AddProducts = () => {
             onChange={productImgHandler} />
           {error && <span className="error-msg">{error}</span>}
           <br />
+
 
           <button className="btn-add" onClick={e => addProduct(e)}>
             Agregar
