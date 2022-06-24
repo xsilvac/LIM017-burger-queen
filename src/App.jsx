@@ -6,6 +6,7 @@ import Kitchen from "./page/Kitchen/Kitchen";
 import Register from "./components/Register/Register";
 import AddProducts from "./components/AddProducts/AddProducts";
 import Products from "./components/Products/Products";
+import Breakfast from "./components/Products/Breakfast";
 import Manager from "./page/Manager/Manager";
 
 export function App() {
@@ -19,6 +20,7 @@ export function App() {
         <Route path="Register" element={<Register />} />
         <Route path="AddProducts" element={< AddProducts />} />
         <Route path="Products" element={< Products />} />
+        <Route path="Breakfast" element={< Breakfast />} />
         <Route path="Manager" element={< Manager />} />
       </Routes>
       </BrowserRouter>
