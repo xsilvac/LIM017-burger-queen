@@ -1,4 +1,4 @@
-/* import React from 'react'
+ import React from 'react'
 import {fireEvent, render, screen} from '@testing-library/react'
 import '@testing-library/jest-dom'
 import {createMemoryHistory} from 'history'
@@ -20,4 +20,4 @@ it('Componente login',() => {
         const btnLogin = screen.getByText('INGRESAR')
         fireEvent.click(btnLogin)
        // screen.getByPlaceholderText('Emaillll')
-}); */
+}); 

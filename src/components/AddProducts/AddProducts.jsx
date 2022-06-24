@@ -67,9 +67,8 @@ const AddProducts = () => {
                 setProductImg("");
                 setError("");
                 document.getElementById("file").value="";
-                console.log('id', docRef.id)
               }).catch (err=> {setError(err.message)
-                console.log("Document written with ID: ", err.message )
+                console.log("Document written with ID: ", docRef.id )
               });
             }
           })
