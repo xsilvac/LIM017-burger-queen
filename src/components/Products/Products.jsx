@@ -5,18 +5,13 @@ import './Products.css';
 import Navbar from "../Navbar/Navbar"
 import { GrTrash } from "react-icons/gr";
 import {useNavigate} from "react-router-dom";
-
-
-
 const Products = () => {
     const [products, setProducts] = useState([])
     console.log('holaa1 estamos iniciando');
     const productsLunch = collection(db, 'Lunch')
     const productsBreakfast = collection(db, 'Breakfast')
     console.log('holaaa2 estamos en lunch');
-
     const navigate = useNavigate();
-
     const getLunch = async () => {
     const data = await getDocs(productsLunch)
     console.log('holaaa3 estamos iniciando getdocs')
@@ -26,7 +21,6 @@ const Products = () => {
     )
     console.log('probando')
     };
-    
     const deleteProduct = async (id) => {
         const productDoc = doc(db, 'Lunch', id)
         await deleteDoc(productDoc)
