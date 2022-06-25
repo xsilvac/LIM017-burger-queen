@@ -1,11 +1,10 @@
 import {useState} from "react";
-import{signInWithEmailAndPassword} from "firebase/auth";
-import {auth} from "../../firebaseConfig/FirebaseConfig";
+import {auth, signInWithEmailAndPassword} from "../../firebaseConfig/FirebaseConfig";
 // import {useAuthState} from "react-firebase-hooks/auth";
 import {useNavigate} from "react-router-dom";
 import './Login.css';
 import  errorAuthFirebase from "../../firebaseConfig/messajeError";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash} from "react-icons/fa";
 import Swal from 'sweetalert2';
 
 

@@ -115,6 +115,7 @@ const AddProducts = () => {
           {error && <span className="error-msg">{error}</span>}
           <br />
 
+
           <button className="btn-add" onClick={e => addProduct(e)}>
             Agregar
           </button>
