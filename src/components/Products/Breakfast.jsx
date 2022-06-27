@@ -44,7 +44,8 @@ const Breakfast = () => {
                         <p className='productName'>{list.ProductName}</p>
                         <p className='productPrice'>Precio: ${list.ProductPrice}</p>
                         <img className='productImg'src={list.ProductImg} alt='' />
-                        <button onClick={() => {deleteProduct(list.id)}} className='btnDelete'><GrTrash /></button>
+                        <br/>
+                        <button onClick={() => {deleteProduct(list.id)}} className="btn btn-danger"><GrTrash /></button>
                         <p></p>
                     </div>
                 ))

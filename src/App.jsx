@@ -3,6 +3,7 @@ import { BrowserRouter,Routes, Route } from "react-router-dom";
 import Menu from "./components/Menu/Menu";
 import Login from "./page/Login/Login";
 import Kitchen from "./page/Kitchen/Kitchen";
+import Waiter from "./page/Waiter/Waiter";
 import Register from "./components/Register/Register";
 import AddProducts from "./components/AddProducts/AddProducts";
 import Products from "./components/Products/Products";
@@ -17,6 +18,7 @@ export function App() {
         <Route path="/" element={<Login />} />
         <Route path="Menu" element={<Menu />} />
         <Route path="Kitchen" element={<Kitchen />} />
+        <Route path="Waiter" element={<Waiter />} />
         <Route path="Register" element={<Register />} />
         <Route path="AddProducts" element={< AddProducts />} />
         <Route path="Products" element={< Products />} />
