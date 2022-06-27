@@ -14,9 +14,7 @@ const Products = () => {
     console.log('holaa1 estamos iniciando');
     const productsLunch = collection(db, 'Lunch')
     console.log('holaaa2 estamos en lunch');
-
     const navigate = useNavigate();
-
     const getLunch = async () => {
     const data = await getDocs(productsLunch)
     console.log('holaaa3 estamos iniciando getdocs')
@@ -26,7 +24,6 @@ const Products = () => {
     )
     console.log('probando')
     };
-    
     const deleteProduct = async (id) => {
         Swal.fire({
             title: 'Esta seguro que quiere eliminarlo',
