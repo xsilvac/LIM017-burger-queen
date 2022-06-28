@@ -14,16 +14,27 @@ export const Navbar = () => {
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button> */}
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li className="nav-item">
-          <a className="nav-link active  mr-2" aria-current="page" href='/Products'>Menú</a>
-        </li>
+    <div className="collapse navbar-collapse " id="navbarSupportedContent">
+
+    <div className="dropdown d-flex justify-content-flex-end">
+  <button className="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Menu
+  </button>
+  <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a className="dropdown-item"
+     href="/Breakfast">Desayuno</a></li>
+    <li><a className="dropdown-item" href="/Products">Almuerzo</a></li>
+  </ul>
+</div>
+
+
+      <ul className="navbar-nav ms-auto mb-3 mb-lg-0">
+     
         <li className="nav-item ">
-          <a className="nav-link active ms-5" aria-current="page" href="/AddProducts">Agregar productos</a>
+          <a className="nav-link active ms-3" aria-current="page" href="/AddProducts">Agregar productos</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link active ms-5" aria-current="page" href="/Register">Crear usuarios</a>
+          <a className="nav-link active ms-3" aria-current="page" href="/Register">Crear usuarios</a>
         </li>
       </ul>
       <form className="d-flex">

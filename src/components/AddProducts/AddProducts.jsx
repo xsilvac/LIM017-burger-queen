@@ -77,49 +77,67 @@ const AddProducts = () => {
   return (
     <><>
       <Navbar />
-    </><div className="containerAddProducts">
-        <div className="containerEmpty"></div>
+    </>
+<div className="bg-light">
+<div className="row text-center">
+        <div className="col-4 offset-4 gy-3 p-4 " id='divName' >
 
         <form autoComplete="off" className="form-group">
           <h2>AGREGAR PRODUCTOS</h2>
           <br />
-          <select className="optionsSelectMenu" onChange={captureType}>
-            <option isdisabled="true">Menu</option>
+          <div className="form-floating mb-3">
+          <select className="form-select text-center" id='floatingSelect' aria-label='Floating label select' onChange={captureType}>
+   
             <option value='breakfast'>Desayuno</option>
             <option value='lunch'>Almuerzo</option>
           </select>
+          <label for="floatingSelect">Menu</label>
+          </div>
           <br />
-          <label htmlFor="product-name">Nombre del producto</label>
+          <div className='form-floating mb-3'>
           <input
             type="text"
-            className="form-control"
+            className="form-control" 
+            id='productName'
             required
             onChange={(e) => setProductName(e.target.value)}
             value={ProductName} />
+             <label for="productName" className="form-label">Nombre del producto</label> 
+          </div>
+
           <br />
-          <label htmlFor="product-price">Precio del producto</label>
+      <div className='form-floating mb-3'>
           <input
+            id='productPrice'
             type="number"
-            className="form-control"
+            className="form-control text-center"
             required
             onChange={(e) => setProductPrice(e.target.value)}
             value={ProductPrice} />
+            <label for="productPrice" className='form-label'>Precio del producto</label>
+            </div>
+
           <br />
-          <label htmlFor="product-img">Imagen del producto</label>
+          <div className='form-floating mb-3'>
           <input
             type="file"
-            className="form-control-img"
+            className="form-control"
             id="file"
             required
             onChange={productImgHandler} />
           {error && <span className="error-msg">{error}</span>}
+          </div>
+
           <br />
-
-
-          <button className="btn-add" onClick={e => addProduct(e)}>
+          <div class="d-grid gap-2">
+ 
+          <button className="btn btn-warning" onClick={e => addProduct(e)}>
             Agregar
           </button>
+          </div>
         </form>
+      </div>
+      </div>
       </div></>
   );
 };
