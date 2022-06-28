@@ -41,24 +41,45 @@ const Login = () => {
     <div className="blurForm"></div>
     <div className="logo"></div>
     <form className="formLogin"  onSubmit={singIn}>
-      <h1>INICIA SESIÓN</h1>
+      <h2>INICIA SESIÓN</h2>
+      <div className="form-floating mb-3 w-100 " width="80%">
+          <select className="form-select text-center" id='floatingSelect' aria-label='Floating label select'>
+           <option value="managger">Administrador</option>
+            <option value="chef">Cocinero</option>
+            <option value="waiter">Mesero</option>
+          </select>
+
+          <label for="floatingSelect">Cargo</label>
+          </div>
+      <div className="form-floating mb-3 w-100"  width="80%">
       <input
         type="email"
+        className="form-control px-5 w-100"
+        width="80%"
         name="userEmail"
         data-testid="userEmail"
         autoComplete="off"
         placeholder="Email"
+        id='email'
         onChange={ev => setEmail(ev.target.value)} />
-        <p></p>
+        <label for="email"className='form-label'>Email</label>
+        </div>
+        <div className="input-group mb-3 w-100">
       <input
+      className="form-control "
         type={shown ? 'text' : 'password'}
         name="password"
         autoComplete="off"
         placeholder="contraseña"
         onChange={ev => setPassword(ev.target.value)} />
-      <button type="button" className="eyeLogin" onClick={switchShown}>{shown ? <FaEye size="2rem"/> : <FaEyeSlash size="2rem"/>}</button>
-      <p>Mínimo 6 caracteres en la contraseña</p>
-      <button className = "btnLogin" type="submit">INGRESAR</button>    </form></div></>
+      <button type="button" className="input-group-text"  onClick={switchShown}>{shown ? <FaEye size="2rem"/> : <FaEyeSlash size="2rem"/>}</button>
+    </div>
+
+      <button className="btn btn-warning w-100" id='btnLogin' type="submit">INGRESAR</button>
+      
+        </form>
+        </div></>
+
   )
 }
 export default Login;

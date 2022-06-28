@@ -1,4 +1,4 @@
-*{
+ *{
   margin: 0;
   padding: 0;
   top: 0;
@@ -38,6 +38,7 @@
   justify-content: space-around;
   z-index: 1;
   align-items: center;
+  padding:5%;
 }
 .formLogin input{
   padding: 4% 6%;
@@ -52,7 +53,7 @@
 .formLogin h1{
   color: rgb(41, 37, 37);
 }
-.btnLogin {
+#btnLogin {
   color: rgb(41, 37, 37);
   padding: 15px;
   background-Color: #FAA30F;
@@ -132,4 +133,4 @@
   left: 85%;
   top: 58%;
 }
-}
+} 
