@@ -1,17 +1,17 @@
-    import React, { useState,useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import { db } from "../../firebaseConfig/FirebaseConfig";
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import './Products.css';
 import Navbar from "../Navbar/Navbar"
 import { GrTrash } from "react-icons/gr";
-import {useNavigate} from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Breakfast = () => {
-    const navigate = useNavigate();
     const [products, setProducts] = useState([])
     console.log('holaa1 estamos iniciando');
     const productsBreakfast = collection(db, 'Breakfast')
     console.log('holaaa2 estamos en lunch');
+
     const getBreakfast = async () => {
         const data = await getDocs(productsBreakfast)
         console.log('holaaa3 estamos iniciando getdocs')
@@ -21,11 +21,28 @@ const Breakfast = () => {
         )
         console.log('probando')
         };
-    const deleteProduct = async (id) => {
-        const productDoc = doc(db, 'Breakfast', id)
-        await deleteDoc(productDoc)
-        getBreakfast()
-    }
+        const deleteProduct = async (id) => {
+            Swal.fire({
+                title: 'Esta seguro que quiere eliminarlo',
+                text: "No habra forma de recuperar el producto eliminado",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, eliminalo!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    const productDoc = doc(db, 'Breakfast', id)
+                    deleteDoc(productDoc)
+                    getBreakfast()
+                  Swal.fire({
+                    title:'Eliminado!',
+                    text:'Producto Eliminado',
+                    imageUrl: "https://cliply.co/wp-content/uploads/2021/03/372103860_CHECK_MARK_400px.gif",
+                })
+                }
+              })
+        }
     useEffect(() => {
         getBreakfast()
         console.log('holaa4 estamos en use effect')
@@ -44,7 +61,7 @@ const Breakfast = () => {
                             <h5 className="card-title">{item.ProductName}</h5>
                             <p className="card-text fs-6">${item.ProductPrice}</p>
                             <div className="row row-cols-2 ms-5">
-                                <button className="btn btn-danger" onClick={deleteProduct}><GrTrash /></button>
+                                <button className="btn btn-danger" onClick={() => {deleteProduct(item.id)}}><GrTrash /></button>
                             </div>
                         </div>
                     </div>

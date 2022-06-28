@@ -3,10 +3,10 @@ import { db } from "../../firebaseConfig/FirebaseConfig";
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import NavbarWaiter from "../../components/Navbar/NavbarWaiter"
 
-function MenuItem({item, onchangeAmount}) {
+function MenuItemLunch({item, onchangeAmount}) {
     const [amount, setAmount] = useState(0)
     const increase = (id) => {
-        setAmount(amount + 1) ;
+        setAmount(amount + 1) ; 
         onchangeAmount()
     }
     const decrease = (id) => {
@@ -32,11 +32,11 @@ function MenuItem({item, onchangeAmount}) {
 }
 
 
-function Waiter() {
+function WaiterLunch() {
     // const navigate = useNavigate();
     const [products, setProducts] = useState([])
    
-    const productsBreakfast = collection(db, 'Breakfast')
+    const productsBreakfast = collection(db, 'Lunch')
 
     const getBreakfast = async () => {
         const data = await getDocs(productsBreakfast)
@@ -58,7 +58,7 @@ const changeAmount = () => {console.log('hola')};
                 <div className="row row-cols-2">
                     <div className="row row-cols-12 row-cols-md-2 w-50 h-30 g-4 text-center">
                         {products.map(item => (
-                            <MenuItem item={item} onchangeAmount={changeAmount}/>
+                            <MenuItemLunch item={item} onchangeAmount={changeAmount}/>
                             ))
                         }
                     </div>
@@ -84,4 +84,4 @@ const changeAmount = () => {console.log('hola')};
     )
 }
 
-export default Waiter
+export default WaiterLunch;

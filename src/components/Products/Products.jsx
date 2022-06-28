@@ -4,7 +4,6 @@ import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import './Products.css';
 import Navbar from "../Navbar/Navbar"
 import { GrTrash } from "react-icons/gr";
-import {useNavigate} from "react-router-dom";
 import Swal from "sweetalert2";
 
 
@@ -14,7 +13,6 @@ const Products = () => {
     console.log('holaa1 estamos iniciando');
     const productsLunch = collection(db, 'Lunch')
     console.log('holaaa2 estamos en lunch');
-    const navigate = useNavigate();
     const getLunch = async () => {
     const data = await getDocs(productsLunch)
     console.log('holaaa3 estamos iniciando getdocs')
@@ -64,7 +62,7 @@ const Products = () => {
                             <h5 className="card-title">{item.ProductName}</h5>
                             <p className="card-text fs-6">${item.ProductPrice}</p>
                             <div className="row row-cols-2 ms-5">
-                                <button className="btn btn-danger" onClick={deleteProduct}><GrTrash /></button>
+                                <button className="btn btn-danger" onClick={() => {deleteProduct(item.id)}}><GrTrash /></button>
                             </div>
                         </div>
                     </div>

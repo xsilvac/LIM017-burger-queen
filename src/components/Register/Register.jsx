@@ -54,7 +54,7 @@ const Register = () => {
     <><div className="bg-ligth"></div>
       <div className="row text-center">
         <div className="col-4 offset-4 gy-3 p-4" id='divRegister'>
-        <form autoComplete="off" className="form-group">
+        <form autoComplete="off" className="form-group" onSubmit={register}>
           <h2>CREAR USUARIO</h2>
           <br/>
           <div className="form-floating mb-3">
@@ -63,10 +63,9 @@ const Register = () => {
             <option value="chef">Cocinero</option>
             <option value="waiter">Mesero</option>
           </select>
-
           <label for="floatingSelect">Cargo</label>
           </div>
-          <br/>
+
           <div className='form-floating mb-3'>
           <input
             className='form-control text-center'
@@ -74,9 +73,12 @@ const Register = () => {
             name="nameNewUser"
             value={email}
             autoComplete='off'
+            id="emailRegister"
             placeholder="ejemplo@burgerboss.com"
             onChange={ev => setEmail(ev.target.value)} />
+            <label for="emailRegister" className="form-label">Email</label>
             </div>
+
             <div class="input-group mb-3">
           <input
             className="form-control text-center"
@@ -87,13 +89,13 @@ const Register = () => {
             placeholder="Ingresar contraseña"
             id='password'
             onChange={ev => setPassword(ev.target.value)} />
-             <button type="button" className="input-group-text" onClick={switchShown}>{shown ? <FaEye size="2rem" /> : <FaEyeSlash size="2rem" />}</button>
-         
-         
+            <button type="button" className="input-group-text" onClick={switchShown}>{shown ? <FaEye size="2rem" /> : <FaEyeSlash size="2rem" />}</button>
           </div>
+
           <p >Mínimo 6 caracteres en la contraseña</p>
+
           <div class="input-group mb-3">
-          <input 
+          <input
             className="form-control"
             type={shownConfirm ? 'text' : 'password'}
             name="passwordConfirmation"
@@ -104,7 +106,6 @@ const Register = () => {
             onChange={ev => setConfirmPassword(ev.target.value)} />
             <button type="button" className="input-group-text" onClick={switchShownConfirm}>{shownConfirm ? <FaEye size="2rem" /> : <FaEyeSlash size="2rem" />}</button>
             </div>
-             <br/>
             <div className='d-grid grap-2'>
           <button className="btn btn-warning" type="submit">
             Registrar</button>

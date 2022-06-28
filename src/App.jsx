@@ -9,6 +9,7 @@ import AddProducts from "./components/AddProducts/AddProducts";
 import Products from "./components/Products/Products";
 import Breakfast from "./components/Products/Breakfast";
 import Manager from "./page/Manager/Manager";
+import WaiterLunch from "./page/Waiter/WaiterLunch";
 
 export function App() {
   return (
@@ -24,6 +25,7 @@ export function App() {
         <Route path="Products" element={< Products />} />
         <Route path="Breakfast" element={< Breakfast />} />
         <Route path="Manager" element={< Manager />} />
+        <Route path="WaiterLunch" element={< WaiterLunch />} />
       </Routes>
       </BrowserRouter>
 

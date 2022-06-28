@@ -9,6 +9,7 @@ import {
 import { collection, addDoc } from "firebase/firestore";
 import './AddProducts.css';
 import Navbar from "../Navbar/Navbar";
+import Swal from "sweetalert2";
 
 const AddProducts = () => {
   const [ProductName, setProductName] = useState("");
@@ -49,6 +50,10 @@ const AddProducts = () => {
                 ProductPrice: Number(ProductPrice),
                 ProductImg: url,
               }).then (()=>{
+                Swal.fire({
+                  imageUrl: "https://i.gifer.com/WUis.gif",
+                  title:"Producto agregado",
+                })
                 setProductName("");
                 setProductPrice(0);
                 setProductImg("");
@@ -62,6 +67,10 @@ const AddProducts = () => {
                 ProductPrice: Number(ProductPrice),
                 ProductImg: url,
               }).then (()=>{
+                Swal.fire({
+                  imageUrl: "https://i.gifer.com/WUis.gif",
+                  title:"Producto agregado",
+                })
                 setProductName("");
                 setProductPrice(0);
                 setProductImg("");
@@ -85,19 +94,18 @@ const AddProducts = () => {
         <form autoComplete="off" className="form-group">
           <h2>AGREGAR PRODUCTOS</h2>
           <br />
-          <div className="form-floating mb-3">
-          <select className="form-select text-center" id='floatingSelect' aria-label='Floating label select' onChange={captureType}>
-   
+          
+          <select className="form-select text-center p-3 mb-3" id='floatingSelect' aria-label='Floating label select' onChange={captureType}>
+           <option disabled value='empty'>Menú</option>
             <option value='breakfast'>Desayuno</option>
             <option value='lunch'>Almuerzo</option>
           </select>
-          <label for="floatingSelect">Menu</label>
-          </div>
-          <br />
+         
+
           <div className='form-floating mb-3'>
           <input
             type="text"
-            className="form-control" 
+            className="form-control text-center" 
             id='productName'
             required
             onChange={(e) => setProductName(e.target.value)}
@@ -105,7 +113,6 @@ const AddProducts = () => {
              <label for="productName" className="form-label">Nombre del producto</label> 
           </div>
 
-          <br />
       <div className='form-floating mb-3'>
           <input
             id='productPrice'
@@ -117,7 +124,6 @@ const AddProducts = () => {
             <label for="productPrice" className='form-label'>Precio del producto</label>
             </div>
 
-          <br />
           <div className='form-floating mb-3'>
           <input
             type="file"
@@ -128,8 +134,7 @@ const AddProducts = () => {
           {error && <span className="error-msg">{error}</span>}
           </div>
 
-          <br />
-          <div class="d-grid gap-2">
+          <div className="d-grid gap-2">
  
           <button className="btn btn-warning" onClick={e => addProduct(e)}>
             Agregar
