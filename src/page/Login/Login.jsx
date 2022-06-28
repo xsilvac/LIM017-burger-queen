@@ -13,10 +13,15 @@ const Login = () => {
   const [email, setEmail]= useState("");
   const [password, setPassword]= useState("");
   const [shown, setShown] = useState(false);
+  const [position, setPosition] = useState('');
   const switchShown = () => setShown(!shown);
 
+  const capturePosition = (e) => {
+    setPosition(e.target.value);
+}
   const singIn = (e) => {
     e.preventDefault();
+    if(position === "managger"){
     signInWithEmailAndPassword (auth,email,password)
     .then(auth => {
       console.log(auth.user.email.slice(-5), auth.user.email.slice(-1), auth.user.email.slice(0, auth.user.email.length - 8))
@@ -33,7 +38,24 @@ const Login = () => {
       })
     });
   }
-  
+  else if(position === "waiter"){
+    signInWithEmailAndPassword (auth,email,password)
+    .then(auth => {
+      console.log(auth.user.email.slice(-5), auth.user.email.slice(-1), auth.user.email.slice(0, auth.user.email.length - 8))
+      navigate ('/Waiter')
+      Swal.fire({
+        imageUrl: 'https://i.gifer.com/YsHW.gif',
+        title: 'Bienvenid@ '+ auth.user.email.slice(0,1).toUpperCase() + auth.user.email.slice(1, auth.user.email.length - 15),
+      })
+    })
+    .catch(err => {
+      Swal.fire({
+        icon: 'warning',
+        title: errorAuthFirebase[err.code],
+      })
+    });
+  }
+}
   return (
     <><div className="backgroundPage"></div>
     <div className="opacity"></div>
@@ -41,24 +63,45 @@ const Login = () => {
     <div className="blurForm"></div>
     <div className="logo"></div>
     <form className="formLogin"  onSubmit={singIn}>
-      <h1>INICIA SESIÓN</h1>
+      <h2>INICIA SESIÓN</h2>
+      <div className="form-floating mb-3 w-100 " width="80%">
+          <select className="form-select text-center" id='floatingSelect' aria-label='Floating label select' onChange={capturePosition}>
+            <option value="chef">Cocinero</option>
+            <option value="managger">Administrador</option>
+            <option value="waiter">Mesero</option>
+          </select>
+
+          <label for="floatingSelect">Cargo</label>
+          </div>
+      <div className="form-floating mb-3 w-100"  width="80%">
       <input
         type="email"
+        className="form-control px-5 w-100"
+        width="80%"
         name="userEmail"
         data-testid="userEmail"
         autoComplete="off"
         placeholder="Email"
+        id='email'
         onChange={ev => setEmail(ev.target.value)} />
-        <p></p>
+        <label for="email"className='form-label'>Email</label>
+        </div>
+        <div className="input-group mb-3 w-100">
       <input
+      className="form-control "
         type={shown ? 'text' : 'password'}
         name="password"
         autoComplete="off"
         placeholder="contraseña"
         onChange={ev => setPassword(ev.target.value)} />
-      <button type="button" className="eyeLogin" onClick={switchShown}>{shown ? <FaEye size="2rem"/> : <FaEyeSlash size="2rem"/>}</button>
-      <p>Mínimo 6 caracteres en la contraseña</p>
-      <button className = "btnLogin" type="submit">INGRESAR</button>    </form></div></>
+      <button type="button" className="input-group-text"  onClick={switchShown}>{shown ? <FaEye size="2rem"/> : <FaEyeSlash size="2rem"/>}</button>
+    </div>
+
+      <button className="btn btn-warning w-100" id='btnLogin' type="submit">INGRESAR</button>
+      
+        </form>
+        </div></>
+
   )
 }
 export default Login;

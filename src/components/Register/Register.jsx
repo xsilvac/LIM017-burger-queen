@@ -51,43 +51,69 @@ const Register = () => {
   }
   return (
     <><Navbar />
-    <><div className="backgroundPage"></div>
-      <div className="divFormRegister">
-        <div className="blurFormReg"></div>
-        <form className="formRegister" onSubmit={register}>
-          <h1>CREAR USUARIO</h1>
-          <select className="optionsSelect">
-            <option isdisabled="true">Cargo</option>
-            <option value="managger">Administrador</option>
+    <><div className="bg-ligth"></div>
+      <div className="row text-center">
+        <div className="col-4 offset-4 gy-3 p-4" id='divRegister'>
+        <form autoComplete="off" className="form-group" onSubmit={register}>
+          <h2>CREAR USUARIO</h2>
+          <br/>
+          <div className="form-floating mb-3">
+          <select className="form-select text-center" id='floatingSelect' aria-label='Floating label select'>
+           <option value="managger">Administrador</option>
             <option value="chef">Cocinero</option>
             <option value="waiter">Mesero</option>
           </select>
+          <label for="floatingSelect">Cargo</label>
+          </div>
+
+          <div className='form-floating mb-3'>
           <input
+            className='form-control text-center'
             type="email"
             name="nameNewUser"
             value={email}
             autoComplete='off'
+            id="emailRegister"
             placeholder="ejemplo@burgerboss.com"
             onChange={ev => setEmail(ev.target.value)} />
+            <label for="emailRegister" className="form-label">Email</label>
+            </div>
+
+            <div class="input-group mb-3">
           <input
+            className="form-control text-center"
             type={shown ? 'text' : 'password'}
             name="passwordNewUser"
             value={password}
             autoComplete='off'
-            placeholder="*************"
+            placeholder="Ingresar contraseña"
+            id='password'
             onChange={ev => setPassword(ev.target.value)} />
-          <button type="button" className="eyeRegister" onClick={switchShown}>{shown ? <FaEye size="2rem" /> : <FaEyeSlash size="2rem" />}</button>
-          <p>Mínimo 6 caracteres en la contraseña</p>
+            <button type="button" className="input-group-text" onClick={switchShown}>{shown ? <FaEye size="2rem" /> : <FaEyeSlash size="2rem" />}</button>
+          </div>
+
+          <p >Mínimo 6 caracteres en la contraseña</p>
+
+          <div class="input-group mb-3">
           <input
+            className="form-control"
             type={shownConfirm ? 'text' : 'password'}
             name="passwordConfirmation"
             value={confirmPassword}
             autoComplete='off'
-            placeholder="*************"
+            id='confPassword'
+            placeholder="Confirma tu contraseña"
             onChange={ev => setConfirmPassword(ev.target.value)} />
-          <button type="button" className="eyeRegisterConfig" onClick={switchShownConfirm}>{shownConfirm ? <FaEye size="2rem" /> : <FaEyeSlash size="2rem" />}</button>
-          <button className="btnRegister" type="submit">Registrar</button>
-        </form></div></></>
+            <button type="button" className="input-group-text" onClick={switchShownConfirm}>{shownConfirm ? <FaEye size="2rem" /> : <FaEyeSlash size="2rem" />}</button>
+            </div>
+            <div className='d-grid grap-2'>
+          <button className="btn btn-warning" type="submit">
+            Registrar</button>
+        </div>
+        </form>
+        </div>
+        </div>
+        </></>
   
   );
 };
