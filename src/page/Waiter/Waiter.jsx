@@ -44,7 +44,7 @@ function Waiter() {
                                         <h6 className="card-title">{list.ProductName}</h6>
                                         <p className="card-text fs-6">${list.ProductPrice}</p>
                                         <div className="row row-cols-3">
-                                            <button className="btn btn-success" onClick={increase}>+</button>
+                                            <button className="btn btn-success" onClick={id => increase(id)}>+</button>
                                             <p className="card-text fs-5">{amount}</p>
                                             <button className="btn btn-danger" onClick={decrease}>-</button>
                                         </div>
