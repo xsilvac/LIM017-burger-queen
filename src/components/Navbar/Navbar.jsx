@@ -5,6 +5,9 @@ import logo1 from "../../img/logo1.png"
 
 export const Navbar = () => {
     const navigate = useNavigate();
+    const handleNavigation=(menuSelected)=>{
+      navigate('/Products',menuSelected)
+    }
   const singOutClick = () => {auth.signOut();navigate("/");}
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -20,8 +23,8 @@ export const Navbar = () => {
     Menu
   </button>
   <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a className="dropdown-item bg-light" href="/Breakfast">Desayuno</a></li>
-    <li><a className="dropdown-item bg-light" href="/Products">Almuerzo</a></li>
+    <li onClick={handleNavigation("Breakfast")}><p className="dropdown-item bg-light" >Desayuno</p></li>
+    <li onClick={handleNavigation("Lunch")}><p className="dropdown-item bg-light" >Almuerzo</p></li>
   </ul>
 </div>
 
