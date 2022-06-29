@@ -1,54 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../../firebaseConfig/FirebaseConfig";
-import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
+import { getProducts } from "../../firebaseConfig/FirebaseConfig";
 import NavbarWaiter from "../../components/Navbar/NavbarWaiter"
+import MenuItem from "./MenuItem"
 
-function MenuItem({item, onchangeAmount}) {
-    const [amount, setAmount] = useState(0)
-    const increase = (id) => {
-        setAmount(amount + 1) ;
-        onchangeAmount()
-    }
-    const decrease = (id) => {
-        setAmount(amount - 1);
-        onchangeAmount()
-    }
-    return (
-        <div key={item.id} className="col w-40">
-            <div className="card h-80 w-30">
-                <img src={item.ProductImg} className="card-img-top " height="200px" width="4%" alt="" />
-                <div className="card-body">
-                    <h6 className="card-title">{item.ProductName}</h6>
-                    <p className="card-text fs-6">${item.ProductPrice}</p>
-                    <div className="row row-cols-3">
-                        <button className="btn btn-success" onClick={increase}>+</button>
-                        <p className="card-text fs-5">{amount}</p>
-                        <button className="btn btn-danger" onClick={decrease}>-</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
-}
-
-
-function Waiter() {
+function Waiter(typeCollection) {
     // const navigate = useNavigate();
     const [products, setProducts] = useState([])
-   
-    const productsBreakfast = collection(db, 'Breakfast')
 
-    const getBreakfast = async () => {
-        const data = await getDocs(productsBreakfast)
-        setProducts(
-            data.docs.map((doc) => ({ ...doc.data(), id: doc.id })),
-        )
-    };
+    const getCollection = () => {
+        getProducts(typeCollection).then((products) =>{
+          setProducts(products)
+        })
+        };
+
 
 const changeAmount = () => {console.log('hola')};
 
     useEffect(() => {
-        getBreakfast()
+        getCollection()
     }, [])
 
     return (

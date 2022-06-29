@@ -3,7 +3,7 @@ import Waiter from './Waiter'
 
 function WaiterBreakfast() {
   return (
-    Waiter('Lunch')
+    Waiter('Breakfast')
   )
 }
 
