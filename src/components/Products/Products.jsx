@@ -1,30 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { db, getProducts} from "../../firebaseConfig/FirebaseConfig";
-import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
-import './Products.css';
+import { getProducts, deleteItem } from "../../firebaseConfig/FirebaseConfig";
+import {useNavigate} from "react-router-dom";
 import Navbar from "../Navbar/Navbar"
 import { GrTrash } from "react-icons/gr";
 import Swal from "sweetalert2";
 
 
+//{route}
 
-const Products = ({route}) => {
+const Products = (typeCollection) => {
+  const navigate = useNavigate();
     const [products, setProducts] = useState([])
-    console.log('holaa1 estamos iniciando');
-  
-    console.log('holaaa2 estamos en lunch');
-    const getLunch = async () => {
-   
-    console.log('holaaa3 estamos iniciando getdocs')
-    console.log(getProducts("Lunch"))
-    getProducts("Lunch").then((products) =>{
-      console.log(products);
+
+    const getCollection = () => {
+    getProducts(typeCollection).then((products) =>{
       setProducts(products)
     })
-    
-    console.log('probando')
     };
-    const deleteProduct = async (id) => {
+
+    const deleteProduct = (id) => {
         Swal.fire({
             title: 'Esta seguro que quiere eliminarlo',
             text: "No habra forma de recuperar el producto eliminado",
@@ -35,9 +29,8 @@ const Products = ({route}) => {
             confirmButtonText: 'Sí, eliminalo!'
           }).then((result) => {
             if (result.isConfirmed) {
-                const productDoc = doc(db, 'Lunch', id)
-                deleteDoc(productDoc)
-                getLunch()
+              deleteItem(typeCollection, id)
+                getCollection()
               Swal.fire({
                 title:'Eliminado!',
                 text:'Producto Eliminado',
@@ -47,9 +40,9 @@ const Products = ({route}) => {
           })
     }
     useEffect(() => {
-        getLunch()
-        console.log('holaa4 estamos en use effect')
+        getCollection()
     }, [] )
+
   return (
     <><Navbar />
            <div className=" bg-light text-center">
@@ -57,8 +50,8 @@ const Products = ({route}) => {
                 <div className="row row-cols-4  ">
                     <div className="row row-cols-12 row-cols-md-2 w-100 h-30 g-4 text-center"></div>
                     {products.map(item => (
-                    <div key={item.id} className="col w-40 py-2">
-                    <div className="card h-80 w-30 p-2 px-2">
+                    <div  className="col w-40 py-2">
+                    <div key={item.id} className="card h-80 w-30 p-2 px-2">
                     <img src={item.ProductImg} className="card-img-top p-0-2-0-2" height="150px" width="4%" alt="" />
                         <div className="card-body">
                             <h5 className="card-title">{item.ProductName}</h5>
