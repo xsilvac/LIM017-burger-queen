@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth,signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage, ref } from "firebase/storage";
-
+import { collection, getDocs } from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -15,8 +15,14 @@ const firebaseConfig = {
   measurementId: "G-FBMTTZ9TG8"
 };
 
+
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
 export {signInWithEmailAndPassword }
+export const getProducts =async(typeOfFood) => {
+  const productsLunch = collection(db, typeOfFood)
+  const data = await getDocs(productsLunch)
+  return data.docs.map((doc) => (doc.data()))
+}

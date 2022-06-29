@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../../firebaseConfig/FirebaseConfig";
+import { db, getProducts} from "../../firebaseConfig/FirebaseConfig";
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import './Products.css';
 import Navbar from "../Navbar/Navbar"
@@ -8,18 +8,20 @@ import Swal from "sweetalert2";
 
 
 
-const Products = () => {
+const Products = ({route}) => {
     const [products, setProducts] = useState([])
     console.log('holaa1 estamos iniciando');
-    const productsLunch = collection(db, 'Lunch')
+  
     console.log('holaaa2 estamos en lunch');
     const getLunch = async () => {
-    const data = await getDocs(productsLunch)
+   
     console.log('holaaa3 estamos iniciando getdocs')
-    setProducts(
-        data.docs.map((doc) => ({...doc.data(),id:doc.id})),
-        console.log(data.docs.map((doc) => ({...doc.data(),id:doc.id})))
-    )
+    console.log(getProducts("Lunch"))
+    getProducts("Lunch").then((products) =>{
+      console.log(products);
+      setProducts(products)
+    })
+    
     console.log('probando')
     };
     const deleteProduct = async (id) => {
