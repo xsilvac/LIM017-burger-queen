@@ -20,7 +20,9 @@ const Login = () => {
     setPosition(e.target.value);
 }
   const singIn = (e) => {
+  
     e.preventDefault();
+    console.log('si entro aqui')
     if(position === "managger"){
     signInWithEmailAndPassword (auth,email,password)
     .then(auth => {
@@ -71,7 +73,7 @@ const Login = () => {
             <option value="waiter">Mesero</option>
           </select>
 
-          <label for="floatingSelect">Cargo</label>
+          <label htmlFor="floatingSelect">Cargo</label>
           </div>
       <div className="form-floating mb-3 w-100"  width="80%">
       <input
@@ -84,7 +86,7 @@ const Login = () => {
         placeholder="Email"
         id='email'
         onChange={ev => setEmail(ev.target.value)} />
-        <label for="email"className='form-label'>Email</label>
+        <label htmlFor="email"className='form-label'>Email</label>
         </div>
         <div className="input-group mb-3 w-100">
       <input

@@ -6,6 +6,8 @@ import MenuItem from "./MenuItem"
 function Waiter(typeCollection) {
     // const navigate = useNavigate();
     const [products, setProducts] = useState([])
+    const [order, setOrder] = useState([])
+
 
     const getCollection = () => {
         getProducts(typeCollection).then((products) =>{
@@ -13,9 +15,14 @@ function Waiter(typeCollection) {
         })
         };
 
+const changeAmount = (id) => {
+ const newValue = [...products] 
+ const prueba = newValue.find((item)=> item.id === id)
+  //   console.log('hola',prueba);        
+     setOrder(currentProducts => [...currentProducts,prueba])
+console.log(order,'holaaaa')
 
-const changeAmount = () => {console.log('hola')};
-
+};
     useEffect(() => {
         getCollection()
     }, [])
@@ -27,7 +34,8 @@ const changeAmount = () => {console.log('hola')};
                 <div className="row row-cols-2">
                     <div className="row row-cols-12 row-cols-md-2 w-50 h-30 g-4 text-center">
                         {products.map(item => (
-                            <MenuItem item={item} onchangeAmount={changeAmount}/>
+                
+                        <MenuItem item={item} key= {item.id} onchangeAmount={() =>changeAmount(item.id)}/>
                             ))
                         }
                     </div>
@@ -36,12 +44,16 @@ const changeAmount = () => {console.log('hola')};
                             <div className="bg-light">
                                 <div className="form-floating mb-3">
                                     <input type="number" className="form-control w-100" id="floatingInput-sizing-default" placeholder="example@example.com"/>
-                                        <label for="floatingInput-sizing-default" className="form-label">Número de mesa</label>
+                                        <label htmlFor="floatingInput-sizing-default" className="form-label">Número de mesa</label>
                                 </div>
                                 <div className="form-floating mb-3">
                                     <input type="text" className="form-control w-100" id="example" placeholder="*****"/>
-                                        <label for="example" className="form-label">Nombre del usuario</label>
+                                        <label htmlFor="example" className="form-label">Nombre del usuario</label>
                                 </div>
+                                <div>
+                                    <p> {order.ProductName} </p>
+                                
+                                    </div>
                             </div>
                             <button type="submit" className="btn btn-warning" >Enviar a Cocina</button>
                         </form>
