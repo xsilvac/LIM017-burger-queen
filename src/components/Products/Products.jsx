@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { getProducts, deleteItem } from "../../firebaseConfig/FirebaseConfig";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import Navbar from "../Navbar/Navbar"
 import { GrTrash } from "react-icons/gr";
 import Swal from "sweetalert2";
 
-
 //{route}
-
-const Products = (typeCollection) => {
+const Products = (props) => {
   const navigate = useNavigate();
     const [products, setProducts] = useState([])
-
+    const menuSelected = props.location.menuSelected
+    console.log(menuSelected)
     const getCollection = () => {
-    getProducts(typeCollection).then((products) =>{
+    getProducts(menuSelected).then((products) =>{
       setProducts(products)
     })
     };
@@ -29,7 +28,7 @@ const Products = (typeCollection) => {
             confirmButtonText: 'Sí, eliminalo!'
           }).then((result) => {
             if (result.isConfirmed) {
-              deleteItem(typeCollection, id)
+              deleteItem(menuSelected, id)
                 getCollection()
               Swal.fire({
                 title:'Eliminado!',
