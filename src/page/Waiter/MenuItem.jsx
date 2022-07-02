@@ -11,7 +11,7 @@ function MenuItem({item, onchangeAmount}) {
         setAmount(amount - 1);
         onchangeAmount()
     }
-    }
+    } 
     return (
         <div key={item.id} className="col w-40">
             <div className="card h-80 w-30">
