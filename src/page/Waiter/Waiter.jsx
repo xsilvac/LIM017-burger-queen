@@ -1,3 +1,4 @@
+/* eslint-disable react/style-prop-object */
 import React, { useState, useEffect } from "react";
 import { getProducts } from "../../firebaseConfig/FirebaseConfig";
 import NavbarWaiter from "../../components/Navbar/NavbarWaiter"
@@ -32,11 +33,10 @@ console.log(filterProducts,'holaaaa',filterProducts.length)
     return (
         <><NavbarWaiter />
         <div className=" bg-light">
-            <div className="container px-4 m-2 row">
-                <div className="col-xs-12 col-md-8">
-                    <div className="row row-cols-12 row-cols-md-2 w-50 h-30 g-4 text-center">
+            <div className="container-fluid text-center">
+                <div className="row-sm-6 col-sm-8 ">
+                    <div className="row-cols-6 row-cols-md-12 w-50 h-30 g-4">
                         {products.map(item => (
-                
                         <MenuItem item={item} key= {item.id} onchangeAmount={() =>changeAmount(item.id,item.ProductName)}/>
                             ))
                         }
