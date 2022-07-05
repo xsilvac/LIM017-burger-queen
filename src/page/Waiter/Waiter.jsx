@@ -3,13 +3,15 @@ import { getProducts, addOrder } from "../../firebaseConfig/FirebaseConfig";
 import NavbarWaiter from "../../components/Navbar/NavbarWaiter"
 import MenuItem from "./MenuItem"
 import { FaTrashAlt } from "react-icons/fa";
-
+//import {serverTimestamp, timestamp} from 'firebase/firestore';
 
 function Waiter(typeCollection) {
     const [products, setProducts] = useState([])
     const [order, setOrder] = useState([])
     const [total, setTotal] = useState(0)
     const [table, setTable] = useState(0)
+    const [curr , setCurr] = useState('')
+    
 
     const getCollection = () => {
         getProducts(typeCollection).then((products) =>{
@@ -45,6 +47,9 @@ if(order.find((item)=> item.id === id)) {
 const deleteItem = (id) => {
     const editedArray = order.filter((item) => item.id !== id);
     setOrder(editedArray);
+
+   //  const time ={timestamp: serverTimestamp()}
+    //    setCurr(time);
   }
     useEffect(() => {
         getCollection()
@@ -81,6 +86,7 @@ const deleteItem = (id) => {
                                     {order.map((product, index) => (
                                         <section key={index}>
                                             <div className="row">
+                                          {/* <p>{product.date.toDate().toString()}</p>*/}
                                             <p className="col-1">{product.amount} </p>
                                             <p className="col-6"> {product.ProductName} </p>
                                             <p className="col-3"> $/{product.ProductPrice * product.amount}.00 </p>
@@ -96,7 +102,7 @@ const deleteItem = (id) => {
                             </div>
                             <button type="button" className="btn btn-warning" onClick={() => {addOrder(order,table, setOrder, setTable)}}>Enviar a Cocina</button>
                         </form>
-                    </div>
+                </div>
                 </div>
             </div>
             </div>
@@ -104,4 +110,4 @@ const deleteItem = (id) => {
     )
 }
 
-export default Waiter
+export default Waiter;

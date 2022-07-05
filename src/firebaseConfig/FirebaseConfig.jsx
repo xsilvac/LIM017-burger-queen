@@ -35,7 +35,8 @@ export const deleteItem = async(typeCollection, id) => {
 export const addOrder = (order, table, setOrder, setTable) => {
   const likesCollection = collection(db, 'Orders');
   addDoc(likesCollection, {
-    order, table
+    order, table, date: new Date(Date.now()),
+
   }).then (()=>{
     Swal.fire({
       imageUrl: "https://i.gifer.com/WUis.gif",
