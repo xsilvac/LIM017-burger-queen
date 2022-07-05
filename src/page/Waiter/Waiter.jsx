@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { getProducts } from "../../firebaseConfig/FirebaseConfig";
+import { getProducts, addOrder } from "../../firebaseConfig/FirebaseConfig";
 import NavbarWaiter from "../../components/Navbar/NavbarWaiter"
 import MenuItem from "./MenuItem"
 import { FaTrashAlt } from "react-icons/fa";
+
 
 function Waiter(typeCollection) {
     const [products, setProducts] = useState([])
     const [order, setOrder] = useState([])
     const [total, setTotal] = useState(0)
+    const [table, setTable] = useState(0)
 
     const getCollection = () => {
         getProducts(typeCollection).then((products) =>{
@@ -53,6 +55,7 @@ const deleteItem = (id) => {
         setTotal(totalOrder);
       }, [order]);
     
+      
 
     return (
         <><NavbarWaiter />
@@ -70,12 +73,9 @@ const deleteItem = (id) => {
                         <form className="row px-3 py-5 mb-3">
                             <div className="bg-light">
                                 <div className="form-floating mb-3">
-                                    <input type="number" className="form-control w-100" id="floatingInput-sizing-default" placeholder="example@example.com"/>
+                                    <input type="number" className="form-control w-100" id="floatingInput-sizing-default"
+                                    placeholder="example@example.com" onChange={ev => setTable(ev.target.value)} required/>
                                         <label htmlFor="floatingInput-sizing-default" className="form-label">Número de mesa</label>
-                                </div>
-                                <div className="form-floating mb-3">
-                                    <input type="text" className="form-control w-100" id="example" placeholder="*****"/>
-                                        <label htmlFor="example" className="form-label">Nombre del usuario</label>
                                 </div>
                                 <div>
                                     {order.map((product, index) => (
@@ -94,7 +94,7 @@ const deleteItem = (id) => {
                                         <p>TOTAL : $/ {total}.00</p>
                                     </div>
                             </div>
-                            <button type="submit" className="btn btn-warning" >Enviar a Cocina</button>
+                            <button type="button" className="btn btn-warning" onClick={() => {addOrder(order,table, setOrder, setTable)}}>Enviar a Cocina</button>
                         </form>
                     </div>
                 </div>
