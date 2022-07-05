@@ -12,7 +12,7 @@ const Kitchen = () => {
     })
     };
     const probando = listOrder.map(order => (
-      console.log(order.order)))
+      console.log(order)))
 
     useEffect(() => {
       getCollection()
@@ -20,18 +20,23 @@ const Kitchen = () => {
 
   return (
     <><NavbarKitchen /><section>
-      <h1>La cocina esta aqui</h1>
       {listOrder.map(order => (
-        <div key={order.id} className="row">
-          <h1 className="col-1">{order.table} </h1>
+        <div className="card">
+        <div key={order.id} className="card border-primary mb-3 w-25 row">
+          <div className="card-body row-col-2  text-center">
+          <h3 className="card-header">Mesa N° {order.table} </h3>
+          <p className='card-text'>{order.date.toDate().toString().slice(0,25)}</p>
           {order.order.map(ord => (
-          <>
-          <p className="col-1">{order.id} </p>
-          <p className="col-3"> $/{ord.amount}.00 </p>
-          <p className="col-6"> {ord.ProductName} </p>
-        </>
+          <div className='row' key={ord.ProductName}>
+          <p className="col card-text "> {ord.amount} </p>
+          <p className="col card-text "> {ord.ProductName} </p>
+          </div>
            ))}
-          <button className="btnOrder col-1" onClick={() => { probando(); } }> Pedido listo </button>
+    
+          <button className="btn btn-success" onClick={() => { probando(); } }> Pedido listo </button>
+         
+        </div>
+        </div>
         </div>
       ))}
     </section></>

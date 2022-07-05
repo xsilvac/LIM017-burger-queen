@@ -3,7 +3,7 @@ import { getProducts, addOrder } from "../../firebaseConfig/FirebaseConfig";
 import NavbarWaiter from "../../components/Navbar/NavbarWaiter"
 import MenuItem from "./MenuItem"
 import { FaTrashAlt } from "react-icons/fa";
-import firebase from 'firebase/firestore';
+//import {serverTimestamp, timestamp} from 'firebase/firestore';
 
 function Waiter(typeCollection) {
     const [products, setProducts] = useState([])
@@ -48,9 +48,8 @@ const deleteItem = (id) => {
     const editedArray = order.filter((item) => item.id !== id);
     setOrder(editedArray);
 
-     const a = firebase.firestore
-            .Timestamp.now().toDate().toString();
-        setCurr(a);
+   //  const time ={timestamp: serverTimestamp()}
+    //    setCurr(time);
   }
     useEffect(() => {
         getCollection()
@@ -87,7 +86,7 @@ const deleteItem = (id) => {
                                     {order.map((product, index) => (
                                         <section key={index}>
                                             <div className="row">
-                                                <p>{curr}</p>
+                                          {/* <p>{product.date.toDate().toString()}</p>*/}
                                             <p className="col-1">{product.amount} </p>
                                             <p className="col-6"> {product.ProductName} </p>
                                             <p className="col-3"> $/{product.ProductPrice * product.amount}.00 </p>
@@ -101,7 +100,7 @@ const deleteItem = (id) => {
                                         <p>TOTAL : $/ {total}.00</p>
                                     </div>
                             </div>
-                            <button type="button" className="btn btn-warning" onClick={() => {addOrder(order,table, setOrder, setTable,curr,setCurr)}}>Enviar a Cocina</button>
+                            <button type="button" className="btn btn-warning" onClick={() => {addOrder(order,table, setOrder, setTable)}}>Enviar a Cocina</button>
                         </form>
                 </div>
                 </div>

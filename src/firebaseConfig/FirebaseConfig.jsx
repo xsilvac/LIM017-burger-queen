@@ -32,10 +32,11 @@ export const deleteItem = async(typeCollection, id) => {
   deleteDoc(doc(db, typeCollection, id))
 }
 
-export const addOrder = (order, table, setOrder, setTable,curr,setCurr) => {
+export const addOrder = (order, table, setOrder, setTable) => {
   const likesCollection = collection(db, 'Orders');
   addDoc(likesCollection, {
-    order, table,curr
+    order, table, date: new Date(Date.now()),
+
   }).then (()=>{
     Swal.fire({
       imageUrl: "https://i.gifer.com/WUis.gif",
@@ -43,6 +44,5 @@ export const addOrder = (order, table, setOrder, setTable,curr,setCurr) => {
     })
     setOrder([]);
     setTable(0);
-    setCurr('');
   }).catch (err=> console.log(err))
 };
