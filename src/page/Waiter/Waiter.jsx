@@ -5,10 +5,8 @@ import NavbarWaiter from "../../components/Navbar/NavbarWaiter"
 import MenuItem from "./MenuItem"
 
 function Waiter(typeCollection) {
-    // const navigate = useNavigate();
     const [products, setProducts] = useState([])
     const [order, setOrder] = useState([])
-    const [warrant, setWarrant] = useState([])
 
     const getCollection = () => {
         getProducts(typeCollection).then((products) =>{
@@ -16,13 +14,30 @@ function Waiter(typeCollection) {
         })
         };
 
-const changeAmount = (id,product) => {
- const listOfProducts = [...products] 
- const findItem = listOfProducts.find((item)=> item.id === id)
-  const filterProducts = order.filter((item)=> item.ProductName=== product)    
-     setOrder(currentProducts => [...currentProducts,findItem])
-     setWarrant(filterProducts)
-console.log(filterProducts,'holaaaa',filterProducts.length)
+const changeAmount = (id, change) => {
+ const listOfProducts = [...products];
+ const findItem = listOfProducts.find((item)=> item.id === id);
+if(order.find((item)=> item.id === id)) {
+    const items = order.map((item) => {
+        if(item.id === id) {
+            if(change==="increase") {
+                return {...item, amount: item.amount+1};
+            } else {
+                if(item.amount>=1) {
+                return {...item, amount: item.amount-1};
+                } else {
+                    return order.map(item => item.id!==id);
+                }
+            }
+        } else {
+           return {...item};
+        }
+    })
+    setOrder(items);
+} else {
+    setOrder(currentProducts => [...currentProducts,{...findItem, amount: 1}]);
+
+}
 
 
 };
@@ -33,11 +48,12 @@ console.log(filterProducts,'holaaaa',filterProducts.length)
     return (
         <><NavbarWaiter />
         <div className=" bg-light">
-            <div className="container-fluid text-center">
-                <div className="row-sm-6 col-sm-8 ">
-                    <div className="row-cols-6 row-cols-md-12 w-50 h-30 g-4">
+            <div className="container px-4 m-2 row">
+                <div className="row row-cols-2">
+                    <div className="row row-cols-12 row-cols-md-2 w-50 h-30 g-4 text-center">
                         {products.map(item => (
-                        <MenuItem item={item} key= {item.id} onchangeAmount={() =>changeAmount(item.id,item.ProductName)}/>
+                
+                        <MenuItem item={item} key={item.id} /* amount={amount} setAmount={setAmount} */ changeAmount={changeAmount}/>
                             ))
                         }
                     </div>
@@ -53,8 +69,8 @@ console.log(filterProducts,'holaaaa',filterProducts.length)
                                         <label htmlFor="example" className="form-label">Nombre del usuario</label>    
                                 </div>
                                 <div>
-                                    {order.map(product => (
-                                        <><p> {product.ProductName} </p><p> </p></>
+                                    {order.map((product, index) => (
+                                        <><p key={index}> {product.ProductName} </p><p>{product.amount} </p></>
                                     ))}
                                  
                                 
