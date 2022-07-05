@@ -2,8 +2,8 @@ import { initializeApp } from "firebase/app";
 import { getAuth,signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage, ref } from "firebase/storage";
-import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
-
+import { collection, getDocs, doc, deleteDoc, addDoc } from "firebase/firestore";
+import Swal from "sweetalert2";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCKqHjJN0FxWhUR4R9gfQZxazS2CMo4iMA",
@@ -31,3 +31,17 @@ export const getProducts =async(typeOfFood) => {
 export const deleteItem = async(typeCollection, id) => {
   deleteDoc(doc(db, typeCollection, id))
 }
+
+export const addOrder = (order, table, setOrder, setTable) => {
+  const likesCollection = collection(db, 'Orders');
+  addDoc(likesCollection, {
+    order, table
+  }).then (()=>{
+    Swal.fire({
+      imageUrl: "https://i.gifer.com/WUis.gif",
+      title:"Pedido agregado",
+    })
+    setOrder([]);
+    setTable(0);
+  }).catch (err=> console.log(err))
+};
