@@ -50,8 +50,8 @@ const Products = (menuSelected) => {
                     <div className="card w-100">
                     <img src={item.ProductImg} className="w-100" height="250px" alt="" />
                         <div className="card-body">
-                            <p className="card-text fs-7">{item.ProductName}</p>
-                            <p className="card-text fs-7">${item.ProductPrice}</p>
+                            <p className="card-text fs-5">{item.ProductName}</p>
+                            <p className="card-text fs-5">${item.ProductPrice}</p>
                             <div className="row row-cols-2 ms-5">
                                 <button className="btn btn-danger" onClick={() => {deleteProduct(item.id)}}><GrTrash /></button>
                             </div>

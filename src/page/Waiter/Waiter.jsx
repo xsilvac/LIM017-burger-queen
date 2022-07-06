@@ -67,7 +67,7 @@ const deleteItem = (id) => {
         <div className=" bg-light">
             <div className="container-fluid m-2 ">
                 <div className="row">
-                    <div className="col sm-10 md-8 row w-30-h-50">
+                    <div className="col row row-cols-4 w-100 h-75">
                         {products.map(item => (
                 
                         <MenuItem item={item} key={item.id} changeAmount={changeAmount}/>
