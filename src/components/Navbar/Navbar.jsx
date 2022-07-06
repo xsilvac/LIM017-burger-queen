@@ -1,15 +1,15 @@
 import React from 'react'
 import {auth} from "../../firebaseConfig/FirebaseConfig";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, NavLink} from "react-router-dom";
 import logo1 from "../../img/logo1.png"
 
 export const Navbar = () => {
     const navigate = useNavigate();
 
-    const handleNavigation=(menuSelected)=>{
-      console.log('hola')
-    navigate('/Products',{menuSelected})
-     }
+    // const handleNavigation=(menuSelected)=>{
+    //   console.log('hola')
+    // navigate('/Products',{menuSelected})
+    //  }
   const singOutClick = () => {auth.signOut();navigate("/");}
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -25,8 +25,8 @@ export const Navbar = () => {
     Menu
   </button>
   <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li onClick={()=> handleNavigation('Breakfast')}><p className="dropdown-item bg-light" >Desayuno</p></li>
-    <li onClick={() => handleNavigation('Lunch')}><p className="dropdown-item bg-light" >Almuerzo</p></li>
+    <li><NavLink to="/Breakfast" className="dropdown-item bg-light" >Desayuno</NavLink></li>
+    <li><NavLink to="/Lunch" className="dropdown-item bg-light" >Almuerzo</NavLink></li>
   </ul>
 </div>
 {/* onClick={handleNavigation("Breakfast")} */}
@@ -37,10 +37,10 @@ onChange={handleNavigation('Lunch')} */}
       <ul className="navbar-nav mb-3 mb-lg-0">
      
         <li className="nav-item ">
-          <a className="nav-link active ms-3" aria-current="page" href="/AddProducts">Agregar productos</a>
+          <NavLink className="nav-link active ms-3" aria-current="page" to="/AddProducts">Agregar productos</NavLink>
         </li>
         <li className="nav-item">
-          <a className="nav-link active ms-3" aria-current="page" href="/Register">Crear usuarios</a>
+          <NavLink className="nav-link active ms-3" aria-current="page" to="/Register">Crear usuarios</NavLink>
         </li>
       </ul>
       <form className="d-flex">

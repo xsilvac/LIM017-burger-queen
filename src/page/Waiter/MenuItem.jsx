@@ -11,9 +11,9 @@ function MenuItem({item/* , amount, setAmount */, changeAmount}) {
         changeAmount(item.id,"decrease");
 }
     return (
-        <div className="col">
-            <div className="card">
-                <img src={item.ProductImg} className="card-img-top " height="200px" width="100px" alt="" />
+        <div className="col px-2 py-2">
+            <div className="card w-100 h-100">
+                <img src={item.ProductImg} className="card-img-top w-100 h-100" alt="" />
                 <div className="card-body">
                     <h6 className="card-title">{item.ProductName}</h6>
                     <p className="card-text fs-6">${item.ProductPrice}</p>

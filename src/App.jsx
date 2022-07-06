@@ -13,6 +13,7 @@ import WaiterLunch from "./page/Waiter/WaiterLunch";
 import Navbar from "./components/Navbar/Navbar";
 import Lunch from "./components/Products/Lunch";
 import WaiterBreakfast from "./page/Waiter/WaiterBreakfast";
+import NoFound from "./components/Menu/NoFound";
 
 export function App() {
   return (
@@ -32,6 +33,7 @@ export function App() {
         <Route path="WaiterBreakfast" element={< WaiterBreakfast />} />
         <Route path="Navbar" element={< Navbar />} />
         <Route path="Lunch" element={< Lunch />} />
+        <Route path="*" element={< NoFound />} />
       </Routes>
       </BrowserRouter>
 
