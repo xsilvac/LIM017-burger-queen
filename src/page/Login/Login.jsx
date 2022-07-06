@@ -20,14 +20,12 @@ const Login = () => {
     setPosition(e.target.value);
 }
   const singIn = (e) => {
-  
     e.preventDefault();
-    console.log('si entro aqui')
+
     if(position === "managger"){
     signInWithEmailAndPassword (auth,email,password)
     .then(auth => {
-      console.log(auth.user.email.slice(-5), auth.user.email.slice(-1), auth.user.email.slice(0, auth.user.email.length - 8))
-      navigate ('/Products')
+      navigate ('/Lunch')
       Swal.fire({
         imageUrl: 'https://i.gifer.com/YsHW.gif',
         title: 'Bienvenid@ '+ auth.user.email.slice(0,1).toUpperCase() + auth.user.email.slice(1, auth.user.email.length - 15),
@@ -43,8 +41,23 @@ const Login = () => {
   else if(position === "waiter"){
     signInWithEmailAndPassword (auth,email,password)
     .then(auth => {
-      console.log(auth.user.email.slice(-5), auth.user.email.slice(-1), auth.user.email.slice(0, auth.user.email.length - 8))
-      navigate ('/Waiter')
+      navigate ('/WaiterLunch')
+      Swal.fire({
+        imageUrl: 'https://i.gifer.com/YsHW.gif',
+        title: 'Bienvenid@ '+ auth.user.email.slice(0,1).toUpperCase() + auth.user.email.slice(1, auth.user.email.length - 15),
+      })
+    })
+    .catch(err => {
+      Swal.fire({
+        icon: 'warning',
+        title: errorAuthFirebase[err.code],
+      })
+    });
+  }
+  else if(position === "chef"){
+    signInWithEmailAndPassword (auth,email,password)
+    .then(auth => {
+      navigate ('/Kitchen')
       Swal.fire({
         imageUrl: 'https://i.gifer.com/YsHW.gif',
         title: 'Bienvenid@ '+ auth.user.email.slice(0,1).toUpperCase() + auth.user.email.slice(1, auth.user.email.length - 15),
@@ -68,8 +81,9 @@ const Login = () => {
       <h2>INICIA SESIÓN</h2>
       <div className="form-floating mb-3 w-100 " width="80%">
           <select className="form-select text-center" id='floatingSelect' aria-label='Floating label select' onChange={capturePosition}>
-            <option value="chef">Cocinero</option>
+            <option value="empty">Seleccione su cargo</option>
             <option value="managger">Administrador</option>
+            <option value="chef">Cocinero</option>
             <option value="waiter">Mesero</option>
           </select>
 

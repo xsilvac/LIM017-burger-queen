@@ -110,7 +110,7 @@ const AddProducts = () => {
             required
             onChange={(e) => setProductName(e.target.value)}
             value={ProductName} />
-             <label for="productName" className="form-label">Nombre del producto</label> 
+             <label htmlFor="productName" className="form-label">Nombre del producto</label> 
           </div>
 
       <div className='form-floating mb-3'>
@@ -121,7 +121,7 @@ const AddProducts = () => {
             required
             onChange={(e) => setProductPrice(e.target.value)}
             value={ProductPrice} />
-            <label for="productPrice" className='form-label'>Precio del producto</label>
+            <label htmlFor="productPrice" className='form-label'>Precio del producto</label>
             </div>
 
           <div className='form-floating mb-3'>

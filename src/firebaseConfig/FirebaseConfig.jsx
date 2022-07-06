@@ -46,3 +46,9 @@ export const addOrder = (order, table, setOrder, setTable) => {
     setTable(0);
   }).catch (err=> console.log(err))
 };
+
+export const getOrders =async(typeOfFood) => {
+  const productsLunch = collection(db, typeOfFood)
+  const data = await getDocs(productsLunch)
+  return data.docs.map((doc) => ({...doc.data(),id:doc.id}))
+}

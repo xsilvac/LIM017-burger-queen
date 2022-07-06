@@ -67,14 +67,14 @@ const deleteItem = (id) => {
         <div className=" bg-light">
             <div className="container-fluid m-2 ">
                 <div className="row">
-                    <div className="col sm-10 md-6 row w-30-h-50">
+                    <div className="col sm-10 md-8 row w-30-h-50">
                         {products.map(item => (
                 
                         <MenuItem item={item} key={item.id} changeAmount={changeAmount}/>
                             ))
                         }
                     </div>
-                    <div className="col col sm-10 md-6">
+                    <div className="col col sm-10 md-4">
                         <form className="row px-3 py-5 mb-3">
                             <div className="bg-light">
                                 <div className="form-floating mb-3">

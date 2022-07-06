@@ -63,7 +63,7 @@ const Register = () => {
             <option value="chef">Cocinero</option>
             <option value="waiter">Mesero</option>
           </select>
-          <label for="floatingSelect">Cargo</label>
+          <label htmlFor="floatingSelect">Cargo</label>
           </div>
 
           <div className='form-floating mb-3'>
@@ -76,10 +76,10 @@ const Register = () => {
             id="emailRegister"
             placeholder="ejemplo@burgerboss.com"
             onChange={ev => setEmail(ev.target.value)} />
-            <label for="emailRegister" className="form-label">Email</label>
+            <label htmlFor="emailRegister" className="form-label">Email</label>
             </div>
 
-            <div class="input-group mb-3">
+            <div className="input-group mb-3">
           <input
             className="form-control text-center"
             type={shown ? 'text' : 'password'}
@@ -94,7 +94,7 @@ const Register = () => {
 
           <p >Mínimo 6 caracteres en la contraseña</p>
 
-          <div class="input-group mb-3">
+          <div className="input-group mb-3">
           <input
             className="form-control"
             type={shownConfirm ? 'text' : 'password'}
