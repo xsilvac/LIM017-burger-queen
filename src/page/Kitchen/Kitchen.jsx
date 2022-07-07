@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getOrders } from "../../firebaseConfig/FirebaseConfig";
+import { getOrders, updateData } from "../../firebaseConfig/FirebaseConfig";
 import NavbarKitchen from "../../components/Navbar/NavbarKitchen";
 
 const Kitchen = () => {
@@ -11,10 +11,18 @@ const Kitchen = () => {
       setListOrder(products);
     });
   };
-  const changeColor = (id) => {
-  const btn = document.getElementById( id )
+
+  const changeColor = (order) => {
+  const btn = document.getElementById( order.id )
   btn.style.backgroundColor="palegreen";
-  }
+  console.log('cambiando de color')
+}
+const updateStatus = (order) => {
+  updateData(order.id);
+}
+  // useEffect(() => {
+  //   changeColor()
+  // },[]);
 
   useEffect(() => {
     getCollection();
@@ -27,9 +35,10 @@ const Kitchen = () => {
         {listOrder.map((order) => (
           <div value="red" key={order.id}  className="row w-25 py-3">
             <div className="col-12" >
-              <div className="card w-75 h-100 " id={order.id} >
+              <div className="card w-75 h-100 ">
                 <div className="card-body text-center">
                   <h6 className="card-header ">Mesa N° {order.table} </h6>
+                  <p className="card-header ">{order.status} </p>
                   <small className="text-muted">{order.date.toDate().toString().slice(0, 25)}</small>
                   {order.order.map((ord) => (
                     <div className="row" key={ord.ProductName}>
@@ -38,7 +47,7 @@ const Kitchen = () => {
                     </div>
                   ))}
                 </div>
-                <button className="btn btn-success" onClick={() => {changeColor(order.id)}}>Pedido listo</button>
+                <button id={order.id} className="btn btn-success" onClick={() => {updateStatus(order)}}>{order.status==='ready' ? 'Pedido listo': 'Pedido pendiente'}</button>
               </div>
             </div>
           </div>
