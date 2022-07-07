@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth,signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage, ref } from "firebase/storage";
-import { collection, getDocs, doc, deleteDoc, addDoc, updateDoc } from "firebase/firestore";
+import { collection, getDocs, doc, deleteDoc, addDoc, updateDoc, query,orderBy, onSnapshot,setOrders} from "firebase/firestore";
 import Swal from "sweetalert2";
 
 const firebaseConfig = {
@@ -57,3 +57,11 @@ export const updateData = async(id) => {
   const collectionRef = doc(db,'Orders', id);
   updateDoc(collectionRef, {status : 'ready'})
 }
+
+export const getOrder= (setOrders) => {
+  const q = query(collection(db, "Orders"), orderBy("date", "desc"));
+  onSnapshot(q, (snapshot) => {
+      setOrders(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+  })
+  
+};
