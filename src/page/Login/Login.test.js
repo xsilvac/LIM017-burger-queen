@@ -4,7 +4,9 @@ import {fireEvent, render, screen, waitFor} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import {createMemoryHistory} from 'history';
 import {Router} from 'react-router-dom';
-import {signInWithEmailAndPassword} from '../../firebaseConfig/__mocks__/FirebaseConfig'
+import {signInWithEmailAndPassword} from '../../firebaseConfig/FirebaseConfig'
+
+describe('a',()=>{
 
 
 it('Componente login', async () => {
@@ -12,11 +14,12 @@ it('Componente login', async () => {
     ...jest.requireActual('react-router-dom'),
     useNavigate: () => jest.fn(),
   }));*/
- jest.mock('./login',()=>({
+ /*jest.mock('./login',()=>{
     return {
       signInWithEmailAndPassword:jest.fn(() =>signInWithEmailAndPassword)
     }
-  }))
+  });*/
+
   const history = createMemoryHistory()
         render(
           <Router location={history.location} navigator={history}>
@@ -31,6 +34,6 @@ it('Componente login', async () => {
         fireEvent.click(btnLogin)
 await waitFor(() =>{
 expect(history.location.pathname).toBe('/Products')
-}
-)
+})
       });
+});
