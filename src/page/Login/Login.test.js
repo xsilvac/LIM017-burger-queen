@@ -4,21 +4,25 @@ import {fireEvent, render, screen, waitFor} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import {createMemoryHistory} from 'history';
 import {Router} from 'react-router-dom';
-import {signInWithEmailAndPassword} from '../../firebaseConfig/FirebaseConfig'
+import {signInWithEmailAndPassword} from '../../firebaseConfig/FirebaseConfig';
 
-describe('a',()=>{
+jest.mock('../../firebaseConfig/FirebaseConfig.jsx')
 
+describe('Renderizar Login', () => {
+  it('Render Login', () => {
+    const history = createMemoryHistory();
+    render(
+      <Router location={history.location} navigator={history}>
+        <Login/>
+        </Router>
+    )
+    const btnLogin = screen.getByTestId('btnLogin');
+    expect(btnLogin).toBeInTheDocument();
+  });
+});
 
+describe('Componente Login',()=>{
 it('Componente login', async () => {
-  /*jest.mock('react-router-dom', () =>({
-    ...jest.requireActual('react-router-dom'),
-    useNavigate: () => jest.fn(),
-  }));*/
- /*jest.mock('./login',()=>{
-    return {
-      signInWithEmailAndPassword:jest.fn(() =>signInWithEmailAndPassword)
-    }
-  });*/
 
   const history = createMemoryHistory()
         render(
@@ -28,12 +32,15 @@ it('Componente login', async () => {
         );
         const emailImput = screen.getByPlaceholderText('Email')
         const pswInput = screen.getByPlaceholderText('contraseña')
+        const valueSelect = screen.getByTestId('selectLogin');
         fireEvent.change(emailImput, {target: {value: 'jossel78@hotmail.com'}})
         fireEvent.change(pswInput,{target: {value: '1234567'}})
+        fireEvent.change(valueSelect, {target: {value:'managger'}})
         const btnLogin = screen.getByText('INGRESAR')
+
         fireEvent.click(btnLogin)
 await waitFor(() =>{
-expect(history.location.pathname).toBe('/Products')
+expect(history.location.pathname).toBe('/Lunch')
 })
       });
 });
