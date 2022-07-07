@@ -5,6 +5,7 @@ import NavbarKitchen from "../../components/Navbar/NavbarKitchen";
 const Kitchen = () => {
   const [listOrder, setListOrder] = useState([]);
   const [order, setOrder] = useState([]);
+  
   const getCollection = () => {
     getOrders("Orders").then((products) => {
       setListOrder(products);

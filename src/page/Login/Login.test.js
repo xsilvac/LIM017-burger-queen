@@ -1,10 +1,12 @@
-/*  import React from 'react';
- import Login from './Login.jsx';
+import React from 'react';
+import {Login} from './Login.jsx';
 import {fireEvent, render, screen, waitFor} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import {createMemoryHistory} from 'history';
 import {Router} from 'react-router-dom';
 import {signInWithEmailAndPassword} from '../../firebaseConfig/__mocks__/FirebaseConfig'
+
+describe('',()=>{
 
 
 it('Componente login', async () => {
@@ -12,11 +14,12 @@ it('Componente login', async () => {
     ...jest.requireActual('react-router-dom'),
     useNavigate: () => jest.fn(),
   }));*/
- /* jest.mock('./login',()=>({
+  jest.mock('./login',()=>({
     return {
       signInWithEmailAndPassword:jest.fn(() =>signInWithEmailAndPassword)
     }
-  }))
+  }));
+
   const history = createMemoryHistory()
         render(
           <Router location={history.location} navigator={history}>
@@ -33,4 +36,5 @@ await waitFor(() =>{
 expect(history.location.pathname).toBe('/Products')
 }
 )
-      });  */
+      });  
+    });
