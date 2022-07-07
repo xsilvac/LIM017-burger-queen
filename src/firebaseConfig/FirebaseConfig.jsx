@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth,signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage, ref } from "firebase/storage";
-import { collection, getDocs, doc, deleteDoc, addDoc } from "firebase/firestore";
+import { collection, getDocs, doc, deleteDoc, addDoc, updateDoc } from "firebase/firestore";
 import Swal from "sweetalert2";
 
 const firebaseConfig = {
@@ -35,7 +35,7 @@ export const deleteItem = async(typeCollection, id) => {
 export const addOrder = (order, table, setOrder, setTable) => {
   const likesCollection = collection(db, 'Orders');
   addDoc(likesCollection, {
-    order, table, date: new Date(Date.now()),
+    order, table, status : 'pending', date: new Date(Date.now())
 
   }).then (()=>{
     Swal.fire({
@@ -51,4 +51,9 @@ export const getOrders =async(typeOfFood) => {
   const productsLunch = collection(db, typeOfFood)
   const data = await getDocs(productsLunch)
   return data.docs.map((doc) => ({...doc.data(),id:doc.id}))
+}
+
+export const updateData = async(id) => {
+  const collectionRef = doc(db,'Orders', id);
+  updateDoc(collectionRef, {status : 'ready'})
 }
