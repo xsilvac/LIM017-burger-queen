@@ -10,7 +10,7 @@ function Waiter(typeCollection) {
     const [order, setOrder] = useState([])
     const [total, setTotal] = useState(0)
     const [table, setTable] = useState(0)
-    const [curr , setCurr] = useState('')
+    //const [status , setStatus] = useState('')
     
 
     const getCollection = () => {
