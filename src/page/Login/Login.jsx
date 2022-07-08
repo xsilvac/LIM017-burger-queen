@@ -80,11 +80,11 @@ const Login = () => {
     <form className="formLogin"  onSubmit={singIn}>
       <h2>INICIA SESIÓN</h2>
       <div className="form-floating mb-3 w-100 " width="80%">
-          <select className="form-select text-center" id='floatingSelect' aria-label='Floating label select' onChange={capturePosition}>
+          <select data-testid='selectLogin' className="form-select text-center" id='floatingSelect' aria-label='Floating label select' onChange={capturePosition}>
             <option value="empty">Seleccione su cargo</option>
-            <option value="managger">Administrador</option>
-            <option value="chef">Cocinero</option>
-            <option value="waiter">Mesero</option>
+            <option data-testid='managger' value="managger">Administrador</option>
+            <option data-testid='chef' value="chef">Cocinero</option>
+            <option data-testid='waiter' value="waiter">Mesero</option>
           </select>
 
           <label htmlFor="floatingSelect">Cargo</label>
@@ -110,11 +110,10 @@ const Login = () => {
         autoComplete="off"
         placeholder="contraseña"
         onChange={ev => setPassword(ev.target.value)} />
-      <button type="button" className="input-group-text"  onClick={switchShown}>{shown ? <FaEye size="2rem"/> : <FaEyeSlash size="2rem"/>}</button>
+      <button type="button" className="input-group-text" onClick={switchShown}>{shown ? <FaEye size="2rem"/> : <FaEyeSlash size="2rem"/>}</button>
     </div>
 
-      <button className="btn btn-warning w-100" id='btnLogin' type="submit">INGRESAR</button>
-      
+      <button className="btn btn-warning w-100" data-testid='btnLogin' type="submit">INGRESAR</button>
         </form>
         </div></>
 

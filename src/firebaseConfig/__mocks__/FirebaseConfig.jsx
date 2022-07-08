@@ -6,16 +6,7 @@ export const getAuth = jest.fn(()=>({
         email:'email@burgerboss.com'
     },
 }));
-export let signInWithEmailAndPassword = jest.fn(
-    (auth,email,password) =>
-    new Promise((resolve, reject) => {
-        if (auth !== null) {
-        resolve({});
-        } else {
-        reject({ error: "no se cerro sesion" });
-        }
-    })
-);
+export const signInWithEmailAndPassword = ( auth= {}, emailUser, passwordUser ) => Promise.resolve({user: {email:'correo@prueba.com'}})
 
 export const collection = jest.fn((_db_, _collection_) => _collection_);
 
