@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { updateData, getOrder } from "../../firebaseConfig/FirebaseConfig";
 import NavbarKitchen from "../../components/Navbar/NavbarKitchen";
+import Chronometer from "./Chronometer"
 
 const Kitchen = () => {
   const [listOrder, setListOrder] = useState([]);
   const [order, setOrder] = useState([]);
-  const [time, setTime] = useState(null);
-  const [initial, setInitial ] = useState(null);
 
   const getCollection = () => {
     getOrder(setListOrder)
@@ -15,36 +14,8 @@ const Kitchen = () => {
 
 const updateStatus = (order) => {
   updateData(order.id);
-  setInitial(+new Date())
+  
 }
-
-const tick = () => {
-  setTime(new Date(+new Date()- initial))
-};
-
-useEffect(()=>{
-if (initial){
-  requestAnimationFrame(tick);
-}
-},[initial]);
-useEffect(() => {
-  if(time){
-    requestAnimationFrame(tick);
-  }
-},[time]);
-const timeFormatter = (date) => {
-  if(!date) return '00:00:00';
-  let mm = date.getUTCMinutes();
-  let ss = date.getSeconds();
-  let cm = Math.round(date.getMilliseconds()/10);
-  mm = mm < 10 ? '0'+mm : mm;
-  ss = ss < 10 ? '0'+ss : ss;
-  cm = cm < 10 ? '0'+cm : cm;
-  return `${mm}:${ss}:${cm}`
-}
-  // useEffect(() => {
-  //   changeColor()
-  // },[]);
 
   useEffect(() => {
     getCollection();
@@ -70,7 +41,7 @@ const timeFormatter = (date) => {
                     </div>
                   ))}
                 </div>
-                <p className="text-center">{timeFormatter(time)}</p>
+                <Chronometer/>
                 <button id={order.id} className={order.status==="ready" ? "btn btn-success" : "btn btn-warning"} onClick={() => {updateStatus(order)}}>{order.status==='ready' ? 'Pedido listo': 'Pedido pendiente'}</button>
               </div>
             </div>

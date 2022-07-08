@@ -19,19 +19,24 @@ function Waiter(typeCollection) {
         })
         };
 
-const changeAmount = (id, change) => {
+/*const changeAmount = (id, change) => {
  const listOfProducts = [...products];
  const findItem = listOfProducts.find((item)=> item.id === id);
 if(order.find((item)=> item.id === id)) {
-    const items = order.map((item) => {
+    const items = [];
+     order.forEach((item,index) => {
+
         if(item.id === id) {
             if(change==="increase") {
-                return {...item, amount: item.amount+1};
+                 item.push({...item, amount: item.amount+1});
+                 //{...item, amount: item.amount+1};
             } else {
-                if(item.amount>=1) {
-                return {...item, amount: item.amount-1};
-                } else {
-                    return order.map(item => item.id!==id);
+                if(item.amount>1) {
+                    item.push({...item, amount: item.amount-1});
+                } 
+                else {
+               return order.filter((item) => item.id !== id);
+
                 }
             }
         } else {
@@ -43,7 +48,35 @@ if(order.find((item)=> item.id === id)) {
     setOrder(currentProducts => [...currentProducts,{...findItem, amount: 1}]);
 
 }
-};
+};*/
+const changeAmount = (id, change) => {
+    const listOfProducts = [...products];
+    const findItem = listOfProducts.find((item)=> item.id === id);
+   if(order.find((item)=> item.id === id)) {
+       const items = order.map((item) => {
+           if(item.id === id) {
+               if(change==="increase") {
+                   return {...item, amount: item.amount+1};
+               } else {
+                   if(item.amount>=1) {
+                   return {...item, amount: item.amount-1};
+                   } else {
+                       return order.map(item => item.id!==id);
+                   }
+               }
+           } else {
+              return {...item};
+           }
+       })
+       setOrder(items);
+   } else {
+       setOrder(currentProducts => [...currentProducts,{...findItem, amount: 1}]);
+   
+   }
+   };
+   
+
+
 const deleteItem = (id) => {
     const editedArray = order.filter((item) => item.id !== id);
     setOrder(editedArray);
@@ -83,17 +116,20 @@ const deleteItem = (id) => {
                                         <label htmlFor="floatingInput-sizing-default" className="form-label">Número de mesa</label>
                                 </div>
                                 <div>
-                                    {order.map((product, index) => (
-                                        <section key={index}>
-                                            <div className="row">
-                                          {/* <p>{product.date.toDate().toString()}</p>*/}
-                                            <p className="col-1">{product.amount} </p>
-                                            <p className="col-6"> {product.ProductName} </p>
-                                            <p className="col-3"> $/{product.ProductPrice * product.amount}.00 </p>
-                                            <button className="btnOrder col-1" onClick={() => {deleteItem(product.id)}}> <FaTrashAlt /></button>
-                                            </div>
-                                        </section>
-                                    ))}
+                                    {order.map((product, index) =>{
+                                       console.log(order)
+                                       return( <section key={index}>
+                                        <div className="row">
+                                      {/* <p>{product.date.toDate().toString()}</p>*/}
+                                        <p className="col-1">{product.amount} </p>
+                                        <p className="col-6"> {product.ProductName} </p>
+                                        <p className="col-3"> $/{product.ProductPrice * product.amount}.00 </p>
+                                        <button className="btnOrder col-1" onClick={() => {deleteItem(product.id)}}> <FaTrashAlt /></button>
+                                        </div>
+                                    </section>
+                                )
+                                    } 
+                                       )}
 
                                     </div>
                                     <div className="center">
