@@ -27,15 +27,15 @@ const NavbarWaiter = () => {
           </div>
 
 
-          {/* <ul className="navbar-nav mb-3 mb-lg-0">
+           <ul className="navbar-nav mb-3 mb-lg-0">
      
         <li className="nav-item ">
-          <a className="nav-link active ms-3" aria-current="page" href="/AddProducts">Agregar productos</a>
+          <NavLink className="nav-link active ms-3" aria-current="page" to="/Orders">Ordenes</NavLink>
         </li>
-        <li className="nav-item">
+        {/*<li className="nav-item">
           <a className="nav-link active ms-3" aria-current="page" href="/Register">Crear usuarios</a>
-        </li>
-      </ul> */}
+        </li>*/}
+      </ul> 
           <form className="d-flex">
             <button className="btn btn-outline-warning ms-5" type="submit" onClick={() => singOutClick()}>Cerrar Sesión</button>
           </form>

@@ -1,5 +1,5 @@
 import {useState} from "react";
-import{createUserWithEmailAndPassword} from "firebase/auth";
+import{createUserWithEmailAndPassword} from "../../firebaseConfig/FirebaseConfig";
 import {auth} from "../../firebaseConfig/FirebaseConfig";
 //import {useNavigate} from "react-router-dom";
 import './Register.css';
@@ -29,6 +29,7 @@ const Register = () => {
     e.preventDefault();
     if(password === confirmPassword){
       createUserWithEmailAndPassword(auth,email,password)
+     // console.log(auth, 'holaaa')
       .then(auth =>{
         Swal.fire({
           imageUrl: "https://c.tenor.com/l3_KagIYSOgAAAAC/yes-happy.gif",
