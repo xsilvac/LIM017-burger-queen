@@ -1,8 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getAuth,signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth,signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getStorage, ref } from "firebase/storage";
-import { collection, getDocs, doc, deleteDoc, addDoc, updateDoc, query,orderBy, onSnapshot,setOrders} from "firebase/firestore";
+import { getStorage} from "firebase/storage";
+import { collection, getDocs, doc, deleteDoc, addDoc, updateDoc, query,orderBy, onSnapshot} from "firebase/firestore";
 import Swal from "sweetalert2";
 
 const firebaseConfig = {
@@ -21,6 +21,7 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
 export {signInWithEmailAndPassword }
+export {createUserWithEmailAndPassword}
 
 
 export const getProducts =async(typeOfFood) => {
@@ -57,7 +58,10 @@ export const updateData = async(id) => {
   const collectionRef = doc(db,'Orders', id);
   updateDoc(collectionRef, {status : 'ready'})
 }
-
+export const updateOrder = async(id) => {
+  const collectionRef = doc(db,'Orders', id);
+  updateDoc(collectionRef, {status : 'delivered'})
+}
 export const getOrder= (setOrders) => {
   const q = query(collection(db, "Orders"), orderBy("date", "desc"));
   onSnapshot(q, (snapshot) => {

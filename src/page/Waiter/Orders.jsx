@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { updateData, getOrder } from "../../firebaseConfig/FirebaseConfig";
-import NavbarKitchen from "../../components/Navbar/NavbarKitchen";
-import Chronometer from "./Chronometer"
+import { updateOrder, getOrder } from "../../firebaseConfig/FirebaseConfig";
+import NavbarWaiter from "../../components/Navbar/NavbarWaiter";
 import Swal from 'sweetalert2';
 
-const Kitchen = () => {
+const Orders = () => {
   const [listOrder, setListOrder] = useState([]);
-  //const [order, setOrder] = useState([]);
 
   const getCollection = () => {
     getOrder(setListOrder)
+    console.log(listOrder);
   };
 
 const updateStatus = (order) => {
-  if(order.status === 'pending')
-  updateData(order.id);
+    
+    if(order.status === 'ready')
+    updateOrder(order.id);
   else{
     Swal.fire({
       icon: 'warning',
@@ -31,7 +31,7 @@ const updateStatus = (order) => {
 
   return (
     <>
-      <NavbarKitchen />
+      <NavbarWaiter />
       <div className="row justify-content-center bg-light">
         {listOrder.map((order) => (
           <div value="red" key={order.id}  className="row w-25 py-3">
@@ -48,7 +48,6 @@ const updateStatus = (order) => {
                     </div>
                   ))}
                 </div>
-                <Chronometer/>
                 <button id={order.id} className={order.status==="ready" ? "btn btn-info" : order.status==="delivered" ?"btn btn-success" : "btn btn-warning"}
                 onClick={() => {updateStatus(order)}}>{order.status==='ready' ? 'Pedido listo' : order.status ==='pending' ? 'Pedido pendiente': 'Pedido Entregado'}
                 </button>
@@ -59,4 +58,4 @@ const updateStatus = (order) => {
     </div></>
   );
 };
-export default Kitchen;
+export default Orders;
