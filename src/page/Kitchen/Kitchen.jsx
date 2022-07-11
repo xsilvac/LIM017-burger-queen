@@ -43,8 +43,8 @@ const updateStatus = (order) => {
                   <small className="text-muted">{order.date.toDate().toString().slice(0, 25)}</small>
                   {order.order.map((ord) => (
                     <div className="row" key={ord.ProductName}>
-                      <p className="card-text ">{ord.amount}
-                        <span className=" card-text "> {ord.ProductName} </span></p>
+                      <p className="card-text ">{ord.amount ===0 ? '':ord.amount}
+                        <span className=" card-text "> {ord.amount ===0 ? '':ord.ProductName} </span></p>
                     </div>
                   ))}
                 </div>
