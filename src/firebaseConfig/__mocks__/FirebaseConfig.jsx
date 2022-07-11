@@ -6,7 +6,9 @@ export const getAuth = jest.fn(()=>({
         email:'email@burgerboss.com'
     },
 }));
-export const signInWithEmailAndPassword = ( auth= {}, emailUser, passwordUser ) => Promise.resolve({user: {email:'correo@prueba.com'}})
+export const signInWithEmailAndPassword = ( auth= {}, emailUser, passwordUser ) => Promise.resolve({user: {email:'correo@prueba.com'} })
+
+export const createUserWithEmailAndPassword =jest.fn((auth, email, password) => Promise.resolve({ user: {email:'correo@prueba.com'} }));
 
 export const collection = jest.fn((_db_, _collection_) => _collection_);
 
