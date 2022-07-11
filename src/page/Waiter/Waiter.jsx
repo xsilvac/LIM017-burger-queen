@@ -49,9 +49,36 @@ if(order.find((item)=> item.id === id)) {
 
 }
 };*/
+// const changeAmount = (id, change) => {
+//     const listOfProducts = [...products];
+//     const findItem = listOfProducts.find((item)=> item.id === id);
+//    if(order.find((item)=> item.id === id)) {
+//        const items = order.map((item) => {
+//            if(item.id === id) {
+//                if(change==="increase") {
+//                    return {...item, amount: item.amount+1};
+//                } else {
+//                    if(item.amount>=1) {
+//                    return {...item, amount: item.amount-1};
+//                    } else {
+//                        return order.map(item => item.id!==id);
+//                    }
+//                }
+//            } else {
+//               return {...item};
+//            }
+//        })
+//        setOrder(items);
+//    } else {
+//        setOrder(currentProducts => [...currentProducts,{...findItem, amount: 1}]);
+   
+//    }
+//    };
 const changeAmount = (id, change) => {
     const listOfProducts = [...products];
     const findItem = listOfProducts.find((item)=> item.id === id);
+    console.log(findItem, 'holaaaa');
+    console.log(order.find((item)=> item.id === id),'aquiii')
    if(order.find((item)=> item.id === id)) {
        const items = order.map((item) => {
            if(item.id === id) {
@@ -61,7 +88,7 @@ const changeAmount = (id, change) => {
                    if(item.amount>=1) {
                    return {...item, amount: item.amount-1};
                    } else {
-                       return order.map(item => item.id!==id);
+                       return order.filter(item => item.id!==id);
                    }
                }
            } else {
@@ -74,6 +101,7 @@ const changeAmount = (id, change) => {
    
    }
    };
+
    
 
 
@@ -117,14 +145,14 @@ const deleteItem = (id) => {
                                 </div>
                                 <div>
                                     {order.map((product, index) =>{
-                                       console.log(order)
+                                    //    console.log(order)
                                        return( <section key={index}>
                                         <div className="row">
                                       {/* <p>{product.date.toDate().toString()}</p>*/}
-                                        <p className="col-1">{product.amount} </p>
-                                        <p className="col-6"> {product.ProductName} </p>
-                                        <p className="col-3"> $/{product.ProductPrice * product.amount}.00 </p>
-                                        <button className="btnOrder col-1" onClick={() => {deleteItem(product.id)}}> <FaTrashAlt /></button>
+                                        <p className="col-1">{product.amount ===0 ? '': product.amount} </p>
+                                        <p className="col-6"> {product.amount ===0 ? '':product.ProductName} </p>
+                                        <p className="col-3"> {isNaN(product.amount) || product.amount ===0 ? '': '$/' + product.ProductPrice * product.amount + '.00'}</p>
+                                        <button className="btnOrder col-1" onClick={() => {deleteItem(product.id)}}> {isNaN(product.amount) || product.amount ===0 ? '' :<FaTrashAlt />}</button>
                                         </div>
                                     </section>
                                 )
@@ -133,7 +161,7 @@ const deleteItem = (id) => {
 
                                     </div>
                                     <div className="center">
-                                        <p>TOTAL : $/ {total}.00</p>
+                                        <p>TOTAL : $/{total }.00 </p>
                                     </div>
                             </div>
                             <button type="button" className="btn btn-warning" onClick={() => {addOrder(order,table, setOrder, setTable)}}>Enviar a Cocina</button>
