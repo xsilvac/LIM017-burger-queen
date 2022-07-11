@@ -29,8 +29,8 @@ const Register = () => {
     e.preventDefault();
     if(password === confirmPassword){
       createUserWithEmailAndPassword(auth,email,password)
-     // console.log(auth, 'holaaa')
       .then(auth =>{
+        console.log(auth, 'estoyyyy awui')
         Swal.fire({
           imageUrl: "https://c.tenor.com/l3_KagIYSOgAAAAC/yes-happy.gif",
           title:"Felicidades, usuario registrado",
@@ -108,7 +108,7 @@ const Register = () => {
             <button type="button" className="input-group-text" onClick={switchShownConfirm}>{shownConfirm ? <FaEye size="2rem" /> : <FaEyeSlash size="2rem" />}</button>
             </div>
             <div className='d-grid grap-2'>
-          <button className="btn btn-warning" type="submit">
+          <button data-testid='btnRegister' className="btn btn-warning" type="submit">
             Registrar</button>
         </div>
         </form>
