@@ -4,7 +4,7 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage} from "firebase/storage";
 import { collection, getDocs, doc, deleteDoc, addDoc, updateDoc, query,orderBy, onSnapshot} from "firebase/firestore";
 import Swal from "sweetalert2";
-import { enableIndexedDbPersistence } from "firebase/firestore";
+//import { enableIndexedDbPersistence } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCKqHjJN0FxWhUR4R9gfQZxazS2CMo4iMA",
@@ -16,7 +16,7 @@ const firebaseConfig = {
   measurementId: "G-FBMTTZ9TG8"
 };
 
-enableIndexedDbPersistence(db)
+/*enableIndexedDbPersistence(db)
   .catch((err) => {
       if (err.code === 'failed-precondition') {
           // Multiple tabs open, persistence can only be enabled
@@ -28,7 +28,7 @@ enableIndexedDbPersistence(db)
           // ...
       }
   });
-// Subsequent queries will use persistence, if it was enabled successfully
+// Subsequent queries will use persistence, if it was enabled successfully*/
 
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
