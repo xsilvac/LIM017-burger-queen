@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { updateData, getOrder } from "../../firebaseConfig/FirebaseConfig";
 import NavbarKitchen from "../../components/Navbar/NavbarKitchen";
-import Chronometer from "./Chronometer"
+//import Chronometer from "./Chronometer"
 import Swal from 'sweetalert2';
 
 const Kitchen = () => {
@@ -47,7 +47,6 @@ const updateStatus = (order) => {
                     </div>
                   ))}
                 </div>
-                <Chronometer/>
                 <button id={order.id} className={order.status==="ready" ? "btn btn-info" : order.status==="delivered" ?"btn btn-success" : "btn btn-warning"}
                 onClick={() => {updateStatus(order)}}>{order.status==='ready' ? 'Pedido listo' : order.status ==='pending' ? 'Pedido pendiente': 'Pedido Entregado'}
                 </button>

@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth,signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getStorage} from "firebase/storage";
+import { getStorage, ref, uploadBytesResumable} from "firebase/storage";
 import { collection, getDocs, doc, deleteDoc, addDoc, updateDoc, query,orderBy, onSnapshot} from "firebase/firestore";
 import Swal from "sweetalert2";
 //import { enableIndexedDbPersistence } from "firebase/firestore";
@@ -16,26 +16,12 @@ const firebaseConfig = {
   measurementId: "G-FBMTTZ9TG8"
 };
 
-/*enableIndexedDbPersistence(db)
-  .catch((err) => {
-      if (err.code === 'failed-precondition') {
-          // Multiple tabs open, persistence can only be enabled
-          // in one tab at a a time.
-          // ...
-      } else if (err.code === 'unimplemented') {
-          // The current browser does not support all of the
-          // features required to enable persistence
-          // ...
-      }
-  });
-// Subsequent queries will use persistence, if it was enabled successfully*/
-
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
 export {signInWithEmailAndPassword }
-export {createUserWithEmailAndPassword}
+export {createUserWithEmailAndPassword, addDoc, collection,ref,uploadBytesResumable}
 
 
 export const getProducts =async(typeOfFood) => {

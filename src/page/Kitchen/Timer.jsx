@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 
   
 function Timer(props) {
@@ -16,4 +16,4 @@ function Timer(props) {
     </div>
   );
 }
-export default Timer;
+export default Timer;*/
