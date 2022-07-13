@@ -10,24 +10,12 @@ export const signInWithEmailAndPassword = ( auth= {}, emailUser, passwordUser ) 
 
 export const createUserWithEmailAndPassword =jest.fn((auth, email, password) => Promise.resolve({ user: {email:'correo@prueba.com'} }));
 
-export const collection = jest.fn((_db_, _collection_) => _collection_);
+export const addDoc = jest.fn((collection, {}) => Promise.resolve({}));
+export const collection = (db, publicaciones) => ({});
+export const onSnapshot = jest.fn((query, callback) => Promise.resolve({}));
 
-export const addDoc = jest.fn((Collection, data) =>
-    Promise.resolve({ [Collection]: data })
-);
 
-export const doc = jest.fn((_db_, nameCol, idDoc) =>
-    Object({
-    [nameCol]: idDoc,
-    })
-);
+// export const addDoc = jest.fn((Collection, data) =>
+//     Promise.resolve({ [Collection]: data })
+// );
 
-export const ref = jest.fn(() => {});
-
-export const query = jest.fn(() => {});
-
-export const orderBy = jest.fn(() => {});
-
-export const onSnapshot = jest.fn(() => Promise.resolve({}));
-
-export const setDoc = jest.fn(() => Promise.resolve({}));

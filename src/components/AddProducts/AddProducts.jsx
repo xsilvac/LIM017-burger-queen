@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { db } from "../../firebaseConfig/FirebaseConfig";
-import { ref } from "firebase/storage";
-import {
+import { db, collection, addDoc  } from "../../firebaseConfig/FirebaseConfig";
+import { ref,
   getStorage,
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
-import { collection, addDoc } from "firebase/firestore";
 import './AddProducts.css';
 import Navbar from "../Navbar/Navbar";
 import Swal from "sweetalert2";
@@ -27,7 +25,7 @@ const AddProducts = () => {
       setError("");
     } else {
       setProductImg(null);
-      setError("Please select a valid image type (jpg or png)");
+      setError("Please select a valid image type (png)");
     }
   };
   const captureType = (e) => {
@@ -95,7 +93,7 @@ const AddProducts = () => {
           <h2>AGREGAR PRODUCTOS</h2>
           <br />
           
-          <select className="form-select text-center p-3 mb-3" id='floatingSelect' aria-label='Floating label select' onChange={captureType}>
+          <select data-testid='selectCollection' className="form-select text-center p-3 mb-3" id='floatingSelect' aria-label='Floating label select' onChange={captureType}>
            <option disabled value='empty'>Menú</option>
             <option value='breakfast'>Desayuno</option>
             <option value='lunch'>Almuerzo</option>
@@ -104,6 +102,7 @@ const AddProducts = () => {
 
           <div className='form-floating mb-3'>
           <input
+            data-testid='NameProduct'
             type="text"
             className="form-control text-center" 
             id='productName'
@@ -115,6 +114,7 @@ const AddProducts = () => {
 
       <div className='form-floating mb-3'>
           <input
+            data-testid='price'
             id='productPrice'
             type="number"
             className="form-control text-center"
@@ -126,6 +126,7 @@ const AddProducts = () => {
 
           <div className='form-floating mb-3'>
           <input
+            data-testid='photo'
             type="file"
             className="form-control"
             id="file"
@@ -136,7 +137,7 @@ const AddProducts = () => {
 
           <div className="d-grid gap-2">
  
-          <button className="btn btn-warning" onClick={e => addProduct(e)}>
+          <button data-testid='btnAddProduct' className="btn btn-warning" onClick={e => addProduct(e)}>
             Agregar
           </button>
           </div>
