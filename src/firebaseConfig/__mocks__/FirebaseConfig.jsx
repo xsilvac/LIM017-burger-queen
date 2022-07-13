@@ -1,5 +1,8 @@
 export const initializeApp = jest.fn(()=>{});
 export const getFirestore = jest.fn(()=>{});
+export const getStorage = jest.fn(()=>{});
+export const ref = jest.fn(()=>{});
+export const uploadBytesResumable = jest.fn(()=>({uploadTask:{snapshot:{ref:"Hola"}}}));
 export const db = jest.fn();
 export const getAuth = jest.fn(()=>({
     currentUser:{

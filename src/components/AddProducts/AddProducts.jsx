@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { db, collection, addDoc  } from "../../firebaseConfig/FirebaseConfig";
-import { ref,
-  getStorage,
-  uploadBytesResumable,
+import { db, collection, addDoc, storage, ref,uploadBytesResumable} from "../../firebaseConfig/FirebaseConfig";
+import {
   getDownloadURL,
 } from "firebase/storage";
 import './AddProducts.css';
@@ -12,7 +10,7 @@ import Swal from "sweetalert2";
 const AddProducts = () => {
   const [ProductName, setProductName] = useState("");
   const [ProductPrice, setProductPrice] = useState(0);
-  const [ProductImg, setProductImg] = useState(null);
+  const [ProductImg, setProductImg] = useState({});
   const [error, setError] = useState("");
   const [typeOp, setTypeOp] = useState('');
 
@@ -24,7 +22,7 @@ const AddProducts = () => {
       setProductImg(selectedFile);
       setError("");
     } else {
-      setProductImg(null);
+      setProductImg({});
       setError("Please select a valid image type (png)");
     }
   };
@@ -36,10 +34,12 @@ const AddProducts = () => {
     const metadata = {
    contentType: "images/png",
     };
-    const storage = getStorage();
     const storageRef = ref(storage, "images/" + ProductImg.name);
 
     const uploadTask = uploadBytesResumable(storageRef, ProductImg, metadata);
+    //console.log(uploadTask,"bbbbbbbbbbbbbbbbbbbbbbbbbb");
+    //console.log(ref,"aaaaaaaaaaaaaaaaaaaahola bb")
+   // console.log(uploadBytesResumable,"eeeeeeeeeeeeeeeehoruguita")
     getDownloadURL(uploadTask.snapshot.ref)
           .then(async (url) => {
             if(typeOp === 'breakfast'){
