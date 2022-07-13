@@ -1,4 +1,4 @@
-function ControlButtons(props) {
+/*function ControlButtons(props) {
     const StartButton = (
       <div className="btn btn-one btn-start"
            onClick={props.handleStart}>
@@ -24,4 +24,4 @@ function ControlButtons(props) {
       </div>
     );
   }
-  export default ControlButtons;
+  export default ControlButtons;*/

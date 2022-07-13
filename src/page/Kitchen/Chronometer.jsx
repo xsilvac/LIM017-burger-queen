@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+/*import React,{ useState } from 'react';
 import Timer from "./Timer";
 import ControlButtons from "./ControlButtons";
 
@@ -47,3 +47,4 @@ const handleReset = () => {
                   handleReset={handleReset} /></div>
   )
 }
+*/
