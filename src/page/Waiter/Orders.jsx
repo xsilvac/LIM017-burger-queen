@@ -39,7 +39,6 @@ const updateStatus = (order) => {
               <div className="card w-75 h-100 ">
                 <div className="card-body text-center">
                   <h6 className="card-header ">Mesa N° {order.table} </h6>
-                  <p className="card-header ">{order.status} </p>
                   <small className="text-muted">{order.date.toDate().toString().slice(0, 25)}</small>
                   {order.order.map((ord) => (
                     <div className="row" key={ord.ProductName}>
