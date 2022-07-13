@@ -34,12 +34,11 @@ const updateStatus = (order) => {
       <NavbarKitchen />
       <div className="row justify-content-center bg-light">
         {listOrder.map((order) => (
-          <div value="red" key={order.id}  className="row w-25 py-3">
-            <div className="col-12" >
-              <div className="card w-75 h-100 ">
+          <div value="red" key={order.id}  className="row w-25 py-3 ">
+            <div className="col-md-12 col-lg-12 col-xl-12" >
+              <div className="card w-100 h-100">
                 <div className="card-body text-center">
                   <h6 className="card-header ">Mesa N° {order.table} </h6>
-                  <p className="card-header ">{order.status} </p>
                   <small className="text-muted">{order.date.toDate().toString().slice(0, 25)}</small>
                   {order.order.map((ord) => (
                     <div className="row" key={ord.ProductName}>
