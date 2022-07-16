@@ -4,7 +4,6 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage, ref, uploadBytesResumable} from "firebase/storage";
 import { collection, getDocs, doc, deleteDoc, addDoc, updateDoc, query,orderBy, onSnapshot} from "firebase/firestore";
 import Swal from "sweetalert2";
-//import { enableIndexedDbPersistence } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCKqHjJN0FxWhUR4R9gfQZxazS2CMo4iMA",

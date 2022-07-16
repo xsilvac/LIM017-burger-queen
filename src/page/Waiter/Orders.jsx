@@ -8,7 +8,6 @@ const Orders = () => {
 
   const getCollection = () => {
     getOrder(setListOrder)
-    console.log(listOrder);
   };
 
 const updateStatus = (order) => {
@@ -36,7 +35,7 @@ const updateStatus = (order) => {
         {listOrder.map((order) => (
           <div value="red" key={order.id}  className="row w-25 py-3">
             <div className="col-12" >
-              <div className="card w-75 h-100 ">
+              <div className="card w-100 h-100">
                 <div className="card-body text-center">
                   <h6 className="card-header ">Mesa N° {order.table} </h6>
                   <small className="text-muted">{order.date.toDate().toString().slice(0, 25)}</small>

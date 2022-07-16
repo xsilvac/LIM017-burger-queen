@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { updateData, getOrder } from "../../firebaseConfig/FirebaseConfig";
 import NavbarKitchen from "../../components/Navbar/NavbarKitchen";
-//import Chronometer from "./Chronometer"
 import Swal from 'sweetalert2';
 
 const Kitchen = () => {
   const [listOrder, setListOrder] = useState([]);
-  //const [order, setOrder] = useState([]);
 
   const getCollection = () => {
     getOrder(setListOrder)

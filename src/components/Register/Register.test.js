@@ -42,26 +42,4 @@ describe("Componente Register", () => {
         expect(createUserWithEmailAndPassword).not.toHaveBeenCalled();
     });
 });
-//     it("el otro test register", async () => {
-//         const history = createMemoryHistory();
-//         render(
-//           <Router location={history.location} navigator={history}>
-//             <Register />
-//           </Router>
-//         );
-//         const emailImput = screen.getByPlaceholderText("ejemplo@burgerboss.com");
-//         const pswInput = screen.getByPlaceholderText("Ingresar contraseña");
-//         const pswInputConf = screen.getByPlaceholderText("Confirma tu contraseña");
-//         const btnRegister = screen.getByTestId("btnRegister");
-//         //const valueSelect = screen.getByTestId("selectLogin");
-//         fireEvent.change(emailImput, { target: { value: "luana@burgerboss.com" } });
-//         fireEvent.change(pswInput, { target: { value: "1234567" } });
-//         fireEvent.change(pswInputConf, { target: { value: "1234567" } });
-    
-//         fireEvent.click(btnRegister);
-//         await waitFor(() => {
-//             expect(createUserWithEmailAndPassword).toHaveBeenCalled();
-//         });
-  
-// });
 });

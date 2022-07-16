@@ -6,10 +6,6 @@ import logo1 from "../../img/logo1.png"
 export const Navbar = () => {
     const navigate = useNavigate();
 
-    // const handleNavigation=(menuSelected)=>{
-    //   console.log('hola')
-    // navigate('/Products',{menuSelected})
-    //  }
   const singOutClick = () => {auth.signOut();navigate("/");}
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -29,9 +25,6 @@ export const Navbar = () => {
     <li><NavLink to="/Lunch" className="dropdown-item bg-light" >Almuerzo</NavLink></li>
   </ul>
 </div>
-{/* onClick={handleNavigation("Breakfast")} */}
-{/* onChange={handleNavigation('Breakfast')}
-onChange={handleNavigation('Lunch')} */}
 
 
       <ul className="navbar-nav mb-3 mb-lg-0">

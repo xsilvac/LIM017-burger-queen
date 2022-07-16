@@ -18,7 +18,3 @@ export const collection = (db, publicaciones) => ({});
 export const onSnapshot = jest.fn((query, callback) => Promise.resolve({}));
 
 
-// export const addDoc = jest.fn((Collection, data) =>
-//     Promise.resolve({ [Collection]: data })
-// );
-

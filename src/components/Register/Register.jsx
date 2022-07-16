@@ -1,7 +1,6 @@
 import {useState} from "react";
 import{createUserWithEmailAndPassword} from "../../firebaseConfig/FirebaseConfig";
 import {auth} from "../../firebaseConfig/FirebaseConfig";
-//import {useNavigate} from "react-router-dom";
 import './Register.css';
 import  errorAuthFirebase from "../../firebaseConfig/messajeError.jsx"
 import {FaEye,FaEyeSlash} from "react-icons/fa"
@@ -9,7 +8,6 @@ import Swal from "sweetalert2";
 import Navbar from "../Navbar/Navbar"
 
 const Register = () => {
-    //const navigate=useNavigate();
   const [email, setEmail]= useState('');
   const [password, setPassword]= useState('');
   const [confirmPassword, setConfirmPassword]= useState('');
@@ -17,20 +15,14 @@ const Register = () => {
   const [shownConfirm, setShownConfirm] = useState(false);
 
   const switchShown = () => setShown(!shown)
-  //  e.preventDefault()
-  
-  
+
   const switchShownConfirm = () => setShownConfirm(!shownConfirm)
-  //e.preventDefault();
-  
-  
-  
+
   const register = (e) => {
     e.preventDefault();
     if(password === confirmPassword){
       createUserWithEmailAndPassword(auth,email,password)
       .then(auth =>{
-        console.log(auth, 'estoyyyy awui')
         Swal.fire({
           imageUrl: "https://c.tenor.com/l3_KagIYSOgAAAAC/yes-happy.gif",
           title:"Felicidades, usuario registrado",

@@ -15,17 +15,6 @@ const NavbarKitchen = () => {
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-    {/* <div className="dropdown ms-auto">
-  <button className="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    Menu
-  </button>
- <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a className="dropdown-item bg-light" href="/Waiter">Desayuno</a></li>
-    <li><a className="dropdown-item bg-light" href="/WaiterLunch">Almuerzo</a></li>
-  </ul>
-</div> */}
-
-
       <form className="d-flex ms-auto">
         <button className="btn btn-outline-warning ms-5" type="submit" onClick={() => singOutClick()}>Cerrar Sesión</button>
       </form>
