@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { getProducts, deleteItem } from "../../firebaseConfig/FirebaseConfig";
-import {useNavigate} from "react-router-dom";
 import Navbar from "../Navbar/Navbar"
 import { GrTrash } from "react-icons/gr";
 import Swal from "sweetalert2";
 
-//{route}
 const Products = (menuSelected) => {
-  const navigate = useNavigate();
     const [products, setProducts] = useState([])
     const getCollection = () => {
     getProducts(menuSelected).then((products) =>{

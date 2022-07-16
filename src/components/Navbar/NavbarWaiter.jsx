@@ -32,9 +32,7 @@ const NavbarWaiter = () => {
         <li className="nav-item ">
           <NavLink className="nav-link active ms-3" aria-current="page" to="/Orders">Ordenes</NavLink>
         </li>
-        {/*<li className="nav-item">
-          <a className="nav-link active ms-3" aria-current="page" href="/Register">Crear usuarios</a>
-        </li>*/}
+        
       </ul> 
           <form className="d-flex">
             <button className="btn btn-outline-warning ms-5" type="submit" onClick={() => singOutClick()}>Cerrar Sesión</button>
