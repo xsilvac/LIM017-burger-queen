@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth,signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getStorage} from "firebase/storage";
+import { getStorage, ref, uploadBytesResumable} from "firebase/storage";
 import { collection, getDocs, doc, deleteDoc, addDoc, updateDoc, query,orderBy, onSnapshot} from "firebase/firestore";
 import Swal from "sweetalert2";
 
@@ -20,7 +20,7 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
 export {signInWithEmailAndPassword }
-export {createUserWithEmailAndPassword, addDoc, collection}
+export {createUserWithEmailAndPassword, addDoc, collection,ref,uploadBytesResumable}
 
 
 export const getProducts =async(typeOfFood) => {

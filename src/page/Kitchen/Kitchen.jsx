@@ -45,7 +45,7 @@ const updateStatus = (order) => {
                     </div>
                   ))}
                 </div>
-               
+
                 <button id={order.id} className={order.status==="ready" ? "btn btn-info" : order.status==="delivered" ?"btn btn-success" : "btn btn-warning"}
                 onClick={() => {updateStatus(order)}}>{order.status==='ready' ? 'Pedido listo' : order.status ==='pending' ? 'Pedido pendiente': 'Pedido Entregado'}
                 </button>
